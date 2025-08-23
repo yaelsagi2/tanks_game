@@ -355,6 +355,8 @@ private:
      * @return The ASCII grid.
      */
     static std::vector<std::string> toAsciiGridFromBoard(GameBoard* board);
+    // Helper function to log dead tanks
+    void logDeadTanks(const std::vector<int>& dead_tanks, int& i, int size_tanks);
 
 };
 

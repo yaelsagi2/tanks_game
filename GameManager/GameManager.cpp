@@ -680,15 +680,7 @@ void GameManager:: consolidateActions(const std::list<std::tuple<TankData*, Acti
     i = 1;
     int size_tanks = tanks.size();
     for (const auto& [td, req, is_approved] : actions) {
-        for (int dead_tank : dead_tanks) {
-            if (i == dead_tank && i != size_tanks-1) {
-                i++;
-                logger.logLine("killed, ",false );
-            }
-            else { if (i == dead_tank) {
-                i++;
-                logger.logLine("killed",true); } }
-        }
+    logDeadTanks(dead_tanks, i, size_tanks);
         bool is_last = (j == size_tanks);
         if (is_approved && !this->board->isObjectOnBoard(td->tank)) {
             logger.logActionSummary(shortActionName(req), false, true, is_last);
@@ -705,9 +697,22 @@ void GameManager:: consolidateActions(const std::list<std::tuple<TankData*, Acti
         }
     }
     i++, j++;
+    logDeadTanks(dead_tanks, i, size_tanks);
 }
     logger.logLine("");
     logger.logLineDetailed("");
+}
+void GameManager::logDeadTanks(const std::vector<int>& dead_tanks, int& i, int size_tanks) {
+    for (int dead_tank : dead_tanks) {
+        if (i == dead_tank && i < size_tanks) {
+            i++;
+            logger.logLine("killed, ", false);
+        }
+        else if (i == dead_tank && i == size_tanks) {
+            i++;
+            logger.logLine("killed", true);
+        }
+    }
 }
 
 void GameManager::setGameResultFields(GameResult& result, std::string& result_str) {

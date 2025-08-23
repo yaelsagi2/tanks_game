@@ -1,0 +1,69 @@
+=== Game start ===
+Rows:4, Cols: 12, Max Steps: 100, Num Shells for each tank: 200
+Initial tanks position:
+Tank 0 of Player 2 starts at (3, 1).
+Tank 0 of Player 1 starts at (5, 2).
+Tank 1 of Player 2 starts at (7, 1).
+Step 1: Tank 0 requested battle info.
+Step 1: Tank 0 of player 2 performed GetBattleInfo
+Step 1: Tank 0 requested battle info.
+Step 1: Tank 0 of player 1 performed GetBattleInfo
+Step 1: Tank 1 requested battle info.
+Step 1: Tank 1 of player 2 performed GetBattleInfo
+
+Step 2: Tank 0 requested battle info.
+Step 2: Tank 0 of player 2 performed GetBattleInfo
+Step 2: Tank 0 requested battle info.
+Step 2: Tank 0 of player 1 performed GetBattleInfo
+Step 2: Tank 1 requested battle info.
+Step 2: Tank 1 of player 2 performed GetBattleInfo
+
+Step 3: Tank 0 requested battle info.
+Step 3: Tank 0 of player 2 performed GetBattleInfo
+Step 3: Tank 0 rotated right by 2/8.
+Step 3: Tank 0 of player 1 performed RotateRight90
+Step 3: Tank 1 requested battle info.
+Step 3: Tank 1 of player 2 performed GetBattleInfo
+
+Step 4: Tank 0 requested battle info.
+Step 4: Tank 0 of player 2 performed GetBattleInfo
+Step 4: Tank 0 requested battle info.
+Step 4: Tank 0 of player 1 performed GetBattleInfo
+Step 4: Tank 1 requested battle info.
+Step 4: Tank 1 of player 2 performed GetBattleInfo
+
+Step 5: Tank 0 requested battle info.
+Step 5: Tank 0 of player 2 performed GetBattleInfo
+Step 5: Tank 0 rotated right by 1/8.
+Step 5: Tank 0 of player 1 performed RotateRight45
+Step 5: Tank 1 requested battle info.
+Step 5: Tank 1 of player 2 performed GetBattleInfo
+
+Step 6: Tank 0 requested battle info.
+Step 6: Tank 0 of player 2 performed GetBattleInfo
+Step 6: Tank 0 moved forward to (6, 1).
+Step 6: Tank 0 of player 1 performed MoveForward
+Step 6: Tank 1 requested battle info.
+Step 6: Tank 1 of player 2 performed GetBattleInfo
+
+Step 7: Tank 0 requested battle info.
+Step 7: Tank 0 of player 2 performed GetBattleInfo
+Step 7: Tank 0 rotated right by 1/8.
+Step 7: Tank 0 of player 1 performed RotateRight45
+Step 7: Tank 1 requested battle info.
+Step 7: Tank 1 of player 2 performed GetBattleInfo
+
+Step 8: Tank 0 requested battle info.
+Step 8: Tank 0 of player 2 performed GetBattleInfo
+Step 8: Tank 0 requested battle info.
+Step 8: Tank 0 of player 1 performed GetBattleInfo
+Step 8: Tank 1 requested battle info.
+Step 8: Tank 1 of player 2 performed GetBattleInfo
+
+Step 9: Tank 0 requested battle info.
+Step 9: Tank 0 of player 2 performed GetBattleInfo
+Step 9: Tank 0 of player 1 performed Shoot
+Step 9: Tank 1 requested battle info.
+Step 9: Tank 1 of player 2 performed GetBattleInfo
+Shell 0 hit Tank 1 at (7, 1). This Tank is player's 2 and it destroyed.
+

@@ -1,0 +1,708 @@
+=== Game start ===
+Rows:4, Cols: 12, Max Steps: 100, Num Shells for each tank: 200
+Initial tanks position:
+Tank 0 of Player 2 starts at (3, 1).
+Tank 0 of Player 1 starts at (5, 2).
+Tank 1 of Player 2 starts at (7, 1).
+Step 1: Tank 0 requested battle info.
+Step 1: Tank 0 of player 2 performed GetBattleInfo
+Step 1: Tank 0 requested battle info.
+Step 1: Tank 0 of player 1 performed GetBattleInfo
+Step 1: Tank 1 requested battle info.
+Step 1: Tank 1 of player 2 performed GetBattleInfo
+
+Step 2: Tank 0 requested battle info.
+Step 2: Tank 0 of player 2 performed GetBattleInfo
+Step 2: Tank 0 requested battle info.
+Step 2: Tank 0 of player 1 performed GetBattleInfo
+Step 2: Tank 1 requested battle info.
+Step 2: Tank 1 of player 2 performed GetBattleInfo
+
+Step 3: Tank 0 requested battle info.
+Step 3: Tank 0 of player 2 performed GetBattleInfo
+Step 3: Tank 0 requested battle info.
+Step 3: Tank 0 of player 1 performed GetBattleInfo
+Step 3: Tank 1 requested battle info.
+Step 3: Tank 1 of player 2 performed GetBattleInfo
+
+Step 4: Tank 0 requested battle info.
+Step 4: Tank 0 of player 2 performed GetBattleInfo
+Step 4: Tank 0 requested battle info.
+Step 4: Tank 0 of player 1 performed GetBattleInfo
+Step 4: Tank 1 requested battle info.
+Step 4: Tank 1 of player 2 performed GetBattleInfo
+
+Step 5: Tank 0 requested battle info.
+Step 5: Tank 0 of player 2 performed GetBattleInfo
+Step 5: Tank 0 requested battle info.
+Step 5: Tank 0 of player 1 performed GetBattleInfo
+Step 5: Tank 1 requested battle info.
+Step 5: Tank 1 of player 2 performed GetBattleInfo
+
+Step 6: Tank 0 requested battle info.
+Step 6: Tank 0 of player 2 performed GetBattleInfo
+Step 6: Tank 0 requested battle info.
+Step 6: Tank 0 of player 1 performed GetBattleInfo
+Step 6: Tank 1 requested battle info.
+Step 6: Tank 1 of player 2 performed GetBattleInfo
+
+Step 7: Tank 0 requested battle info.
+Step 7: Tank 0 of player 2 performed GetBattleInfo
+Step 7: Tank 0 requested battle info.
+Step 7: Tank 0 of player 1 performed GetBattleInfo
+Step 7: Tank 1 requested battle info.
+Step 7: Tank 1 of player 2 performed GetBattleInfo
+
+Step 8: Tank 0 requested battle info.
+Step 8: Tank 0 of player 2 performed GetBattleInfo
+Step 8: Tank 0 requested battle info.
+Step 8: Tank 0 of player 1 performed GetBattleInfo
+Step 8: Tank 1 requested battle info.
+Step 8: Tank 1 of player 2 performed GetBattleInfo
+
+Step 9: Tank 0 requested battle info.
+Step 9: Tank 0 of player 2 performed GetBattleInfo
+Step 9: Tank 0 requested battle info.
+Step 9: Tank 0 of player 1 performed GetBattleInfo
+Step 9: Tank 1 requested battle info.
+Step 9: Tank 1 of player 2 performed GetBattleInfo
+
+Step 10: Tank 0 requested battle info.
+Step 10: Tank 0 of player 2 performed GetBattleInfo
+Step 10: Tank 0 requested battle info.
+Step 10: Tank 0 of player 1 performed GetBattleInfo
+Step 10: Tank 1 requested battle info.
+Step 10: Tank 1 of player 2 performed GetBattleInfo
+
+Step 11: Tank 0 requested battle info.
+Step 11: Tank 0 of player 2 performed GetBattleInfo
+Step 11: Tank 0 requested battle info.
+Step 11: Tank 0 of player 1 performed GetBattleInfo
+Step 11: Tank 1 requested battle info.
+Step 11: Tank 1 of player 2 performed GetBattleInfo
+
+Step 12: Tank 0 requested battle info.
+Step 12: Tank 0 of player 2 performed GetBattleInfo
+Step 12: Tank 0 requested battle info.
+Step 12: Tank 0 of player 1 performed GetBattleInfo
+Step 12: Tank 1 requested battle info.
+Step 12: Tank 1 of player 2 performed GetBattleInfo
+
+Step 13: Tank 0 requested battle info.
+Step 13: Tank 0 of player 2 performed GetBattleInfo
+Step 13: Tank 0 requested battle info.
+Step 13: Tank 0 of player 1 performed GetBattleInfo
+Step 13: Tank 1 requested battle info.
+Step 13: Tank 1 of player 2 performed GetBattleInfo
+
+Step 14: Tank 0 requested battle info.
+Step 14: Tank 0 of player 2 performed GetBattleInfo
+Step 14: Tank 0 requested battle info.
+Step 14: Tank 0 of player 1 performed GetBattleInfo
+Step 14: Tank 1 requested battle info.
+Step 14: Tank 1 of player 2 performed GetBattleInfo
+
+Step 15: Tank 0 requested battle info.
+Step 15: Tank 0 of player 2 performed GetBattleInfo
+Step 15: Tank 0 requested battle info.
+Step 15: Tank 0 of player 1 performed GetBattleInfo
+Step 15: Tank 1 requested battle info.
+Step 15: Tank 1 of player 2 performed GetBattleInfo
+
+Step 16: Tank 0 requested battle info.
+Step 16: Tank 0 of player 2 performed GetBattleInfo
+Step 16: Tank 0 requested battle info.
+Step 16: Tank 0 of player 1 performed GetBattleInfo
+Step 16: Tank 1 requested battle info.
+Step 16: Tank 1 of player 2 performed GetBattleInfo
+
+Step 17: Tank 0 requested battle info.
+Step 17: Tank 0 of player 2 performed GetBattleInfo
+Step 17: Tank 0 requested battle info.
+Step 17: Tank 0 of player 1 performed GetBattleInfo
+Step 17: Tank 1 requested battle info.
+Step 17: Tank 1 of player 2 performed GetBattleInfo
+
+Step 18: Tank 0 requested battle info.
+Step 18: Tank 0 of player 2 performed GetBattleInfo
+Step 18: Tank 0 requested battle info.
+Step 18: Tank 0 of player 1 performed GetBattleInfo
+Step 18: Tank 1 requested battle info.
+Step 18: Tank 1 of player 2 performed GetBattleInfo
+
+Step 19: Tank 0 requested battle info.
+Step 19: Tank 0 of player 2 performed GetBattleInfo
+Step 19: Tank 0 requested battle info.
+Step 19: Tank 0 of player 1 performed GetBattleInfo
+Step 19: Tank 1 requested battle info.
+Step 19: Tank 1 of player 2 performed GetBattleInfo
+
+Step 20: Tank 0 requested battle info.
+Step 20: Tank 0 of player 2 performed GetBattleInfo
+Step 20: Tank 0 requested battle info.
+Step 20: Tank 0 of player 1 performed GetBattleInfo
+Step 20: Tank 1 requested battle info.
+Step 20: Tank 1 of player 2 performed GetBattleInfo
+
+Step 21: Tank 0 requested battle info.
+Step 21: Tank 0 of player 2 performed GetBattleInfo
+Step 21: Tank 0 requested battle info.
+Step 21: Tank 0 of player 1 performed GetBattleInfo
+Step 21: Tank 1 requested battle info.
+Step 21: Tank 1 of player 2 performed GetBattleInfo
+
+Step 22: Tank 0 requested battle info.
+Step 22: Tank 0 of player 2 performed GetBattleInfo
+Step 22: Tank 0 requested battle info.
+Step 22: Tank 0 of player 1 performed GetBattleInfo
+Step 22: Tank 1 requested battle info.
+Step 22: Tank 1 of player 2 performed GetBattleInfo
+
+Step 23: Tank 0 requested battle info.
+Step 23: Tank 0 of player 2 performed GetBattleInfo
+Step 23: Tank 0 requested battle info.
+Step 23: Tank 0 of player 1 performed GetBattleInfo
+Step 23: Tank 1 requested battle info.
+Step 23: Tank 1 of player 2 performed GetBattleInfo
+
+Step 24: Tank 0 requested battle info.
+Step 24: Tank 0 of player 2 performed GetBattleInfo
+Step 24: Tank 0 requested battle info.
+Step 24: Tank 0 of player 1 performed GetBattleInfo
+Step 24: Tank 1 requested battle info.
+Step 24: Tank 1 of player 2 performed GetBattleInfo
+
+Step 25: Tank 0 requested battle info.
+Step 25: Tank 0 of player 2 performed GetBattleInfo
+Step 25: Tank 0 requested battle info.
+Step 25: Tank 0 of player 1 performed GetBattleInfo
+Step 25: Tank 1 requested battle info.
+Step 25: Tank 1 of player 2 performed GetBattleInfo
+
+Step 26: Tank 0 requested battle info.
+Step 26: Tank 0 of player 2 performed GetBattleInfo
+Step 26: Tank 0 requested battle info.
+Step 26: Tank 0 of player 1 performed GetBattleInfo
+Step 26: Tank 1 requested battle info.
+Step 26: Tank 1 of player 2 performed GetBattleInfo
+
+Step 27: Tank 0 requested battle info.
+Step 27: Tank 0 of player 2 performed GetBattleInfo
+Step 27: Tank 0 requested battle info.
+Step 27: Tank 0 of player 1 performed GetBattleInfo
+Step 27: Tank 1 requested battle info.
+Step 27: Tank 1 of player 2 performed GetBattleInfo
+
+Step 28: Tank 0 requested battle info.
+Step 28: Tank 0 of player 2 performed GetBattleInfo
+Step 28: Tank 0 requested battle info.
+Step 28: Tank 0 of player 1 performed GetBattleInfo
+Step 28: Tank 1 requested battle info.
+Step 28: Tank 1 of player 2 performed GetBattleInfo
+
+Step 29: Tank 0 requested battle info.
+Step 29: Tank 0 of player 2 performed GetBattleInfo
+Step 29: Tank 0 requested battle info.
+Step 29: Tank 0 of player 1 performed GetBattleInfo
+Step 29: Tank 1 requested battle info.
+Step 29: Tank 1 of player 2 performed GetBattleInfo
+
+Step 30: Tank 0 requested battle info.
+Step 30: Tank 0 of player 2 performed GetBattleInfo
+Step 30: Tank 0 requested battle info.
+Step 30: Tank 0 of player 1 performed GetBattleInfo
+Step 30: Tank 1 requested battle info.
+Step 30: Tank 1 of player 2 performed GetBattleInfo
+
+Step 31: Tank 0 requested battle info.
+Step 31: Tank 0 of player 2 performed GetBattleInfo
+Step 31: Tank 0 requested battle info.
+Step 31: Tank 0 of player 1 performed GetBattleInfo
+Step 31: Tank 1 requested battle info.
+Step 31: Tank 1 of player 2 performed GetBattleInfo
+
+Step 32: Tank 0 requested battle info.
+Step 32: Tank 0 of player 2 performed GetBattleInfo
+Step 32: Tank 0 requested battle info.
+Step 32: Tank 0 of player 1 performed GetBattleInfo
+Step 32: Tank 1 requested battle info.
+Step 32: Tank 1 of player 2 performed GetBattleInfo
+
+Step 33: Tank 0 requested battle info.
+Step 33: Tank 0 of player 2 performed GetBattleInfo
+Step 33: Tank 0 requested battle info.
+Step 33: Tank 0 of player 1 performed GetBattleInfo
+Step 33: Tank 1 requested battle info.
+Step 33: Tank 1 of player 2 performed GetBattleInfo
+
+Step 34: Tank 0 requested battle info.
+Step 34: Tank 0 of player 2 performed GetBattleInfo
+Step 34: Tank 0 requested battle info.
+Step 34: Tank 0 of player 1 performed GetBattleInfo
+Step 34: Tank 1 requested battle info.
+Step 34: Tank 1 of player 2 performed GetBattleInfo
+
+Step 35: Tank 0 requested battle info.
+Step 35: Tank 0 of player 2 performed GetBattleInfo
+Step 35: Tank 0 requested battle info.
+Step 35: Tank 0 of player 1 performed GetBattleInfo
+Step 35: Tank 1 requested battle info.
+Step 35: Tank 1 of player 2 performed GetBattleInfo
+
+Step 36: Tank 0 requested battle info.
+Step 36: Tank 0 of player 2 performed GetBattleInfo
+Step 36: Tank 0 requested battle info.
+Step 36: Tank 0 of player 1 performed GetBattleInfo
+Step 36: Tank 1 requested battle info.
+Step 36: Tank 1 of player 2 performed GetBattleInfo
+
+Step 37: Tank 0 requested battle info.
+Step 37: Tank 0 of player 2 performed GetBattleInfo
+Step 37: Tank 0 requested battle info.
+Step 37: Tank 0 of player 1 performed GetBattleInfo
+Step 37: Tank 1 requested battle info.
+Step 37: Tank 1 of player 2 performed GetBattleInfo
+
+Step 38: Tank 0 requested battle info.
+Step 38: Tank 0 of player 2 performed GetBattleInfo
+Step 38: Tank 0 requested battle info.
+Step 38: Tank 0 of player 1 performed GetBattleInfo
+Step 38: Tank 1 requested battle info.
+Step 38: Tank 1 of player 2 performed GetBattleInfo
+
+Step 39: Tank 0 requested battle info.
+Step 39: Tank 0 of player 2 performed GetBattleInfo
+Step 39: Tank 0 requested battle info.
+Step 39: Tank 0 of player 1 performed GetBattleInfo
+Step 39: Tank 1 requested battle info.
+Step 39: Tank 1 of player 2 performed GetBattleInfo
+
+Step 40: Tank 0 requested battle info.
+Step 40: Tank 0 of player 2 performed GetBattleInfo
+Step 40: Tank 0 requested battle info.
+Step 40: Tank 0 of player 1 performed GetBattleInfo
+Step 40: Tank 1 requested battle info.
+Step 40: Tank 1 of player 2 performed GetBattleInfo
+
+Step 41: Tank 0 requested battle info.
+Step 41: Tank 0 of player 2 performed GetBattleInfo
+Step 41: Tank 0 requested battle info.
+Step 41: Tank 0 of player 1 performed GetBattleInfo
+Step 41: Tank 1 requested battle info.
+Step 41: Tank 1 of player 2 performed GetBattleInfo
+
+Step 42: Tank 0 requested battle info.
+Step 42: Tank 0 of player 2 performed GetBattleInfo
+Step 42: Tank 0 requested battle info.
+Step 42: Tank 0 of player 1 performed GetBattleInfo
+Step 42: Tank 1 requested battle info.
+Step 42: Tank 1 of player 2 performed GetBattleInfo
+
+Step 43: Tank 0 requested battle info.
+Step 43: Tank 0 of player 2 performed GetBattleInfo
+Step 43: Tank 0 requested battle info.
+Step 43: Tank 0 of player 1 performed GetBattleInfo
+Step 43: Tank 1 requested battle info.
+Step 43: Tank 1 of player 2 performed GetBattleInfo
+
+Step 44: Tank 0 requested battle info.
+Step 44: Tank 0 of player 2 performed GetBattleInfo
+Step 44: Tank 0 requested battle info.
+Step 44: Tank 0 of player 1 performed GetBattleInfo
+Step 44: Tank 1 requested battle info.
+Step 44: Tank 1 of player 2 performed GetBattleInfo
+
+Step 45: Tank 0 requested battle info.
+Step 45: Tank 0 of player 2 performed GetBattleInfo
+Step 45: Tank 0 requested battle info.
+Step 45: Tank 0 of player 1 performed GetBattleInfo
+Step 45: Tank 1 requested battle info.
+Step 45: Tank 1 of player 2 performed GetBattleInfo
+
+Step 46: Tank 0 requested battle info.
+Step 46: Tank 0 of player 2 performed GetBattleInfo
+Step 46: Tank 0 requested battle info.
+Step 46: Tank 0 of player 1 performed GetBattleInfo
+Step 46: Tank 1 requested battle info.
+Step 46: Tank 1 of player 2 performed GetBattleInfo
+
+Step 47: Tank 0 requested battle info.
+Step 47: Tank 0 of player 2 performed GetBattleInfo
+Step 47: Tank 0 requested battle info.
+Step 47: Tank 0 of player 1 performed GetBattleInfo
+Step 47: Tank 1 requested battle info.
+Step 47: Tank 1 of player 2 performed GetBattleInfo
+
+Step 48: Tank 0 requested battle info.
+Step 48: Tank 0 of player 2 performed GetBattleInfo
+Step 48: Tank 0 requested battle info.
+Step 48: Tank 0 of player 1 performed GetBattleInfo
+Step 48: Tank 1 requested battle info.
+Step 48: Tank 1 of player 2 performed GetBattleInfo
+
+Step 49: Tank 0 requested battle info.
+Step 49: Tank 0 of player 2 performed GetBattleInfo
+Step 49: Tank 0 requested battle info.
+Step 49: Tank 0 of player 1 performed GetBattleInfo
+Step 49: Tank 1 requested battle info.
+Step 49: Tank 1 of player 2 performed GetBattleInfo
+
+Step 50: Tank 0 requested battle info.
+Step 50: Tank 0 of player 2 performed GetBattleInfo
+Step 50: Tank 0 requested battle info.
+Step 50: Tank 0 of player 1 performed GetBattleInfo
+Step 50: Tank 1 requested battle info.
+Step 50: Tank 1 of player 2 performed GetBattleInfo
+
+Step 51: Tank 0 requested battle info.
+Step 51: Tank 0 of player 2 performed GetBattleInfo
+Step 51: Tank 0 requested battle info.
+Step 51: Tank 0 of player 1 performed GetBattleInfo
+Step 51: Tank 1 requested battle info.
+Step 51: Tank 1 of player 2 performed GetBattleInfo
+
+Step 52: Tank 0 requested battle info.
+Step 52: Tank 0 of player 2 performed GetBattleInfo
+Step 52: Tank 0 requested battle info.
+Step 52: Tank 0 of player 1 performed GetBattleInfo
+Step 52: Tank 1 requested battle info.
+Step 52: Tank 1 of player 2 performed GetBattleInfo
+
+Step 53: Tank 0 requested battle info.
+Step 53: Tank 0 of player 2 performed GetBattleInfo
+Step 53: Tank 0 requested battle info.
+Step 53: Tank 0 of player 1 performed GetBattleInfo
+Step 53: Tank 1 requested battle info.
+Step 53: Tank 1 of player 2 performed GetBattleInfo
+
+Step 54: Tank 0 requested battle info.
+Step 54: Tank 0 of player 2 performed GetBattleInfo
+Step 54: Tank 0 requested battle info.
+Step 54: Tank 0 of player 1 performed GetBattleInfo
+Step 54: Tank 1 requested battle info.
+Step 54: Tank 1 of player 2 performed GetBattleInfo
+
+Step 55: Tank 0 requested battle info.
+Step 55: Tank 0 of player 2 performed GetBattleInfo
+Step 55: Tank 0 requested battle info.
+Step 55: Tank 0 of player 1 performed GetBattleInfo
+Step 55: Tank 1 requested battle info.
+Step 55: Tank 1 of player 2 performed GetBattleInfo
+
+Step 56: Tank 0 requested battle info.
+Step 56: Tank 0 of player 2 performed GetBattleInfo
+Step 56: Tank 0 requested battle info.
+Step 56: Tank 0 of player 1 performed GetBattleInfo
+Step 56: Tank 1 requested battle info.
+Step 56: Tank 1 of player 2 performed GetBattleInfo
+
+Step 57: Tank 0 requested battle info.
+Step 57: Tank 0 of player 2 performed GetBattleInfo
+Step 57: Tank 0 requested battle info.
+Step 57: Tank 0 of player 1 performed GetBattleInfo
+Step 57: Tank 1 requested battle info.
+Step 57: Tank 1 of player 2 performed GetBattleInfo
+
+Step 58: Tank 0 requested battle info.
+Step 58: Tank 0 of player 2 performed GetBattleInfo
+Step 58: Tank 0 requested battle info.
+Step 58: Tank 0 of player 1 performed GetBattleInfo
+Step 58: Tank 1 requested battle info.
+Step 58: Tank 1 of player 2 performed GetBattleInfo
+
+Step 59: Tank 0 requested battle info.
+Step 59: Tank 0 of player 2 performed GetBattleInfo
+Step 59: Tank 0 requested battle info.
+Step 59: Tank 0 of player 1 performed GetBattleInfo
+Step 59: Tank 1 requested battle info.
+Step 59: Tank 1 of player 2 performed GetBattleInfo
+
+Step 60: Tank 0 requested battle info.
+Step 60: Tank 0 of player 2 performed GetBattleInfo
+Step 60: Tank 0 requested battle info.
+Step 60: Tank 0 of player 1 performed GetBattleInfo
+Step 60: Tank 1 requested battle info.
+Step 60: Tank 1 of player 2 performed GetBattleInfo
+
+Step 61: Tank 0 requested battle info.
+Step 61: Tank 0 of player 2 performed GetBattleInfo
+Step 61: Tank 0 requested battle info.
+Step 61: Tank 0 of player 1 performed GetBattleInfo
+Step 61: Tank 1 requested battle info.
+Step 61: Tank 1 of player 2 performed GetBattleInfo
+
+Step 62: Tank 0 requested battle info.
+Step 62: Tank 0 of player 2 performed GetBattleInfo
+Step 62: Tank 0 requested battle info.
+Step 62: Tank 0 of player 1 performed GetBattleInfo
+Step 62: Tank 1 requested battle info.
+Step 62: Tank 1 of player 2 performed GetBattleInfo
+
+Step 63: Tank 0 requested battle info.
+Step 63: Tank 0 of player 2 performed GetBattleInfo
+Step 63: Tank 0 requested battle info.
+Step 63: Tank 0 of player 1 performed GetBattleInfo
+Step 63: Tank 1 requested battle info.
+Step 63: Tank 1 of player 2 performed GetBattleInfo
+
+Step 64: Tank 0 requested battle info.
+Step 64: Tank 0 of player 2 performed GetBattleInfo
+Step 64: Tank 0 requested battle info.
+Step 64: Tank 0 of player 1 performed GetBattleInfo
+Step 64: Tank 1 requested battle info.
+Step 64: Tank 1 of player 2 performed GetBattleInfo
+
+Step 65: Tank 0 requested battle info.
+Step 65: Tank 0 of player 2 performed GetBattleInfo
+Step 65: Tank 0 requested battle info.
+Step 65: Tank 0 of player 1 performed GetBattleInfo
+Step 65: Tank 1 requested battle info.
+Step 65: Tank 1 of player 2 performed GetBattleInfo
+
+Step 66: Tank 0 requested battle info.
+Step 66: Tank 0 of player 2 performed GetBattleInfo
+Step 66: Tank 0 requested battle info.
+Step 66: Tank 0 of player 1 performed GetBattleInfo
+Step 66: Tank 1 requested battle info.
+Step 66: Tank 1 of player 2 performed GetBattleInfo
+
+Step 67: Tank 0 requested battle info.
+Step 67: Tank 0 of player 2 performed GetBattleInfo
+Step 67: Tank 0 requested battle info.
+Step 67: Tank 0 of player 1 performed GetBattleInfo
+Step 67: Tank 1 requested battle info.
+Step 67: Tank 1 of player 2 performed GetBattleInfo
+
+Step 68: Tank 0 requested battle info.
+Step 68: Tank 0 of player 2 performed GetBattleInfo
+Step 68: Tank 0 requested battle info.
+Step 68: Tank 0 of player 1 performed GetBattleInfo
+Step 68: Tank 1 requested battle info.
+Step 68: Tank 1 of player 2 performed GetBattleInfo
+
+Step 69: Tank 0 requested battle info.
+Step 69: Tank 0 of player 2 performed GetBattleInfo
+Step 69: Tank 0 requested battle info.
+Step 69: Tank 0 of player 1 performed GetBattleInfo
+Step 69: Tank 1 requested battle info.
+Step 69: Tank 1 of player 2 performed GetBattleInfo
+
+Step 70: Tank 0 requested battle info.
+Step 70: Tank 0 of player 2 performed GetBattleInfo
+Step 70: Tank 0 requested battle info.
+Step 70: Tank 0 of player 1 performed GetBattleInfo
+Step 70: Tank 1 requested battle info.
+Step 70: Tank 1 of player 2 performed GetBattleInfo
+
+Step 71: Tank 0 requested battle info.
+Step 71: Tank 0 of player 2 performed GetBattleInfo
+Step 71: Tank 0 requested battle info.
+Step 71: Tank 0 of player 1 performed GetBattleInfo
+Step 71: Tank 1 requested battle info.
+Step 71: Tank 1 of player 2 performed GetBattleInfo
+
+Step 72: Tank 0 requested battle info.
+Step 72: Tank 0 of player 2 performed GetBattleInfo
+Step 72: Tank 0 requested battle info.
+Step 72: Tank 0 of player 1 performed GetBattleInfo
+Step 72: Tank 1 requested battle info.
+Step 72: Tank 1 of player 2 performed GetBattleInfo
+
+Step 73: Tank 0 requested battle info.
+Step 73: Tank 0 of player 2 performed GetBattleInfo
+Step 73: Tank 0 requested battle info.
+Step 73: Tank 0 of player 1 performed GetBattleInfo
+Step 73: Tank 1 requested battle info.
+Step 73: Tank 1 of player 2 performed GetBattleInfo
+
+Step 74: Tank 0 requested battle info.
+Step 74: Tank 0 of player 2 performed GetBattleInfo
+Step 74: Tank 0 requested battle info.
+Step 74: Tank 0 of player 1 performed GetBattleInfo
+Step 74: Tank 1 requested battle info.
+Step 74: Tank 1 of player 2 performed GetBattleInfo
+
+Step 75: Tank 0 requested battle info.
+Step 75: Tank 0 of player 2 performed GetBattleInfo
+Step 75: Tank 0 requested battle info.
+Step 75: Tank 0 of player 1 performed GetBattleInfo
+Step 75: Tank 1 requested battle info.
+Step 75: Tank 1 of player 2 performed GetBattleInfo
+
+Step 76: Tank 0 requested battle info.
+Step 76: Tank 0 of player 2 performed GetBattleInfo
+Step 76: Tank 0 requested battle info.
+Step 76: Tank 0 of player 1 performed GetBattleInfo
+Step 76: Tank 1 requested battle info.
+Step 76: Tank 1 of player 2 performed GetBattleInfo
+
+Step 77: Tank 0 requested battle info.
+Step 77: Tank 0 of player 2 performed GetBattleInfo
+Step 77: Tank 0 requested battle info.
+Step 77: Tank 0 of player 1 performed GetBattleInfo
+Step 77: Tank 1 requested battle info.
+Step 77: Tank 1 of player 2 performed GetBattleInfo
+
+Step 78: Tank 0 requested battle info.
+Step 78: Tank 0 of player 2 performed GetBattleInfo
+Step 78: Tank 0 requested battle info.
+Step 78: Tank 0 of player 1 performed GetBattleInfo
+Step 78: Tank 1 requested battle info.
+Step 78: Tank 1 of player 2 performed GetBattleInfo
+
+Step 79: Tank 0 requested battle info.
+Step 79: Tank 0 of player 2 performed GetBattleInfo
+Step 79: Tank 0 requested battle info.
+Step 79: Tank 0 of player 1 performed GetBattleInfo
+Step 79: Tank 1 requested battle info.
+Step 79: Tank 1 of player 2 performed GetBattleInfo
+
+Step 80: Tank 0 requested battle info.
+Step 80: Tank 0 of player 2 performed GetBattleInfo
+Step 80: Tank 0 requested battle info.
+Step 80: Tank 0 of player 1 performed GetBattleInfo
+Step 80: Tank 1 requested battle info.
+Step 80: Tank 1 of player 2 performed GetBattleInfo
+
+Step 81: Tank 0 requested battle info.
+Step 81: Tank 0 of player 2 performed GetBattleInfo
+Step 81: Tank 0 requested battle info.
+Step 81: Tank 0 of player 1 performed GetBattleInfo
+Step 81: Tank 1 requested battle info.
+Step 81: Tank 1 of player 2 performed GetBattleInfo
+
+Step 82: Tank 0 requested battle info.
+Step 82: Tank 0 of player 2 performed GetBattleInfo
+Step 82: Tank 0 requested battle info.
+Step 82: Tank 0 of player 1 performed GetBattleInfo
+Step 82: Tank 1 requested battle info.
+Step 82: Tank 1 of player 2 performed GetBattleInfo
+
+Step 83: Tank 0 requested battle info.
+Step 83: Tank 0 of player 2 performed GetBattleInfo
+Step 83: Tank 0 requested battle info.
+Step 83: Tank 0 of player 1 performed GetBattleInfo
+Step 83: Tank 1 requested battle info.
+Step 83: Tank 1 of player 2 performed GetBattleInfo
+
+Step 84: Tank 0 requested battle info.
+Step 84: Tank 0 of player 2 performed GetBattleInfo
+Step 84: Tank 0 requested battle info.
+Step 84: Tank 0 of player 1 performed GetBattleInfo
+Step 84: Tank 1 requested battle info.
+Step 84: Tank 1 of player 2 performed GetBattleInfo
+
+Step 85: Tank 0 requested battle info.
+Step 85: Tank 0 of player 2 performed GetBattleInfo
+Step 85: Tank 0 requested battle info.
+Step 85: Tank 0 of player 1 performed GetBattleInfo
+Step 85: Tank 1 requested battle info.
+Step 85: Tank 1 of player 2 performed GetBattleInfo
+
+Step 86: Tank 0 requested battle info.
+Step 86: Tank 0 of player 2 performed GetBattleInfo
+Step 86: Tank 0 requested battle info.
+Step 86: Tank 0 of player 1 performed GetBattleInfo
+Step 86: Tank 1 requested battle info.
+Step 86: Tank 1 of player 2 performed GetBattleInfo
+
+Step 87: Tank 0 requested battle info.
+Step 87: Tank 0 of player 2 performed GetBattleInfo
+Step 87: Tank 0 requested battle info.
+Step 87: Tank 0 of player 1 performed GetBattleInfo
+Step 87: Tank 1 requested battle info.
+Step 87: Tank 1 of player 2 performed GetBattleInfo
+
+Step 88: Tank 0 requested battle info.
+Step 88: Tank 0 of player 2 performed GetBattleInfo
+Step 88: Tank 0 requested battle info.
+Step 88: Tank 0 of player 1 performed GetBattleInfo
+Step 88: Tank 1 requested battle info.
+Step 88: Tank 1 of player 2 performed GetBattleInfo
+
+Step 89: Tank 0 requested battle info.
+Step 89: Tank 0 of player 2 performed GetBattleInfo
+Step 89: Tank 0 requested battle info.
+Step 89: Tank 0 of player 1 performed GetBattleInfo
+Step 89: Tank 1 requested battle info.
+Step 89: Tank 1 of player 2 performed GetBattleInfo
+
+Step 90: Tank 0 requested battle info.
+Step 90: Tank 0 of player 2 performed GetBattleInfo
+Step 90: Tank 0 requested battle info.
+Step 90: Tank 0 of player 1 performed GetBattleInfo
+Step 90: Tank 1 requested battle info.
+Step 90: Tank 1 of player 2 performed GetBattleInfo
+
+Step 91: Tank 0 requested battle info.
+Step 91: Tank 0 of player 2 performed GetBattleInfo
+Step 91: Tank 0 requested battle info.
+Step 91: Tank 0 of player 1 performed GetBattleInfo
+Step 91: Tank 1 requested battle info.
+Step 91: Tank 1 of player 2 performed GetBattleInfo
+
+Step 92: Tank 0 requested battle info.
+Step 92: Tank 0 of player 2 performed GetBattleInfo
+Step 92: Tank 0 requested battle info.
+Step 92: Tank 0 of player 1 performed GetBattleInfo
+Step 92: Tank 1 requested battle info.
+Step 92: Tank 1 of player 2 performed GetBattleInfo
+
+Step 93: Tank 0 requested battle info.
+Step 93: Tank 0 of player 2 performed GetBattleInfo
+Step 93: Tank 0 requested battle info.
+Step 93: Tank 0 of player 1 performed GetBattleInfo
+Step 93: Tank 1 requested battle info.
+Step 93: Tank 1 of player 2 performed GetBattleInfo
+
+Step 94: Tank 0 requested battle info.
+Step 94: Tank 0 of player 2 performed GetBattleInfo
+Step 94: Tank 0 requested battle info.
+Step 94: Tank 0 of player 1 performed GetBattleInfo
+Step 94: Tank 1 requested battle info.
+Step 94: Tank 1 of player 2 performed GetBattleInfo
+
+Step 95: Tank 0 requested battle info.
+Step 95: Tank 0 of player 2 performed GetBattleInfo
+Step 95: Tank 0 requested battle info.
+Step 95: Tank 0 of player 1 performed GetBattleInfo
+Step 95: Tank 1 requested battle info.
+Step 95: Tank 1 of player 2 performed GetBattleInfo
+
+Step 96: Tank 0 requested battle info.
+Step 96: Tank 0 of player 2 performed GetBattleInfo
+Step 96: Tank 0 requested battle info.
+Step 96: Tank 0 of player 1 performed GetBattleInfo
+Step 96: Tank 1 requested battle info.
+Step 96: Tank 1 of player 2 performed GetBattleInfo
+
+Step 97: Tank 0 requested battle info.
+Step 97: Tank 0 of player 2 performed GetBattleInfo
+Step 97: Tank 0 requested battle info.
+Step 97: Tank 0 of player 1 performed GetBattleInfo
+Step 97: Tank 1 requested battle info.
+Step 97: Tank 1 of player 2 performed GetBattleInfo
+
+Step 98: Tank 0 requested battle info.
+Step 98: Tank 0 of player 2 performed GetBattleInfo
+Step 98: Tank 0 requested battle info.
+Step 98: Tank 0 of player 1 performed GetBattleInfo
+Step 98: Tank 1 requested battle info.
+Step 98: Tank 1 of player 2 performed GetBattleInfo
+
+Step 99: Tank 0 requested battle info.
+Step 99: Tank 0 of player 2 performed GetBattleInfo
+Step 99: Tank 0 requested battle info.
+Step 99: Tank 0 of player 1 performed GetBattleInfo
+Step 99: Tank 1 requested battle info.
+Step 99: Tank 1 of player 2 performed GetBattleInfo
+
+Step 100: Tank 0 requested battle info.
+Step 100: Tank 0 of player 2 performed GetBattleInfo
+Step 100: Tank 0 requested battle info.
+Step 100: Tank 0 of player 1 performed GetBattleInfo
+Step 100: Tank 1 requested battle info.
+Step 100: Tank 1 of player 2 performed GetBattleInfo
+
+== Final Result ==
+Tie, reached max steps=100, player 1 has 1 tanks, player 2 has 2 tanks

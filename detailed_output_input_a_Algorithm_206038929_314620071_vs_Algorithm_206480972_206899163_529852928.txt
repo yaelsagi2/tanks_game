@@ -1,0 +1,6 @@
+=== Game start ===
+Rows:4, Cols: 12, Max Steps: 100, Num Shells for each tank: 200
+Initial tanks position:
+Tank 0 of Player 2 starts at (3, 1).
+Tank 0 of Player 1 starts at (5, 2).
+Tank 1 of Player 2 starts at (7, 1).
