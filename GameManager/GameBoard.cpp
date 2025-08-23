@@ -23,8 +23,8 @@ GameBoard::GameBoard(size_t map_width, size_t map_height, const SatelliteView& m
     player1_tanks.clear();
     player2_tanks.clear();
     int player1_tank_id = 0,  player2_tank_id = 0;     // Track tank IDs for each player
-    for (size_t x = 0; x < map_height; ++x) { // Parse the satellite view and create game objects
-        for (size_t y = 0; y < map_width; ++y) {
+    for (size_t y = 0; y < map_height; ++y) { // Parse the satellite view and create game objects
+        for (size_t x = 0; x < map_width; ++x) {
             char cell = map.getObjectAt(x, y);
             Point pos(static_cast<int>(x), static_cast<int>(y));
             switch (cell) {
@@ -155,8 +155,8 @@ void GameBoard::printBoardState() const {
         }
     }
 
-    for (int x = 0; x < rows; ++x) {
-        for (int y = 0; y < cols; ++y) {
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < cols; ++x) {
             std::cout << board[x][y];
         }
         std::cout << '\n';

@@ -10,10 +10,10 @@ void Task::run() {
         auto gm = gm_factory(verbose);
 
         // 3) Build players for this map
-        auto p1_up = pf1(player1_index, map_info.rows, map_info.cols,
+        auto p1_up = pf1(player1_index, map_info.cols, map_info.rows,
             map_info.max_steps, map_info.num_shells);
 
-        auto p2_up = pf2(player2_index, map_info.rows, map_info.cols,
+        auto p2_up = pf2(player2_index, map_info.cols, map_info.rows,
             map_info.max_steps, map_info.num_shells);
 
         MapDataSatelliteView sat_view(&map_info);

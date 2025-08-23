@@ -994,7 +994,7 @@ std::vector<std::string> GameManager::toAsciiGridFromBoard(GameBoard* board) {
 
     for (size_t y = 0; y < rows; ++y) {
         for (size_t x = 0; x < cols; ++x) {
-            grid[y][x] = satellite_view.getObjectAt(y, x);
+            grid[x][y] = satellite_view.getObjectAt(x, y);
         }
     }
     return grid;

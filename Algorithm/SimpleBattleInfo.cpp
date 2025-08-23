@@ -245,8 +245,8 @@ void SimpleBattleInfo::printBattleState() const {
         Point pos = myTank->getPosition();
         board[pos.getX()][pos.getY()] = '%';
     }
-    for (size_t x = 0; x < rows; ++x) {     // Print the board from top to bottom (0,0 is top-left)
-        for (size_t y = 0; y < cols; ++y) {
+    for (size_t y = 0; y < rows; ++y) {     // Print the board from top to bottom (0,0 is top-left)
+        for (size_t x = 0; x < cols; ++x) {
             std::cout << board[x][y];
         }
         std::cout << '\n';

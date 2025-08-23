@@ -4,8 +4,8 @@
 MapDataSatelliteView::MapDataSatelliteView(MapData* mapData) {
     // Initialize the map_view with the dimensions from mapData
     map_view = CharMatrix(mapData->rows, mapData->cols,' '); // Fill with spaces
-    for (int x = 0; x < mapData->rows; ++x) {
-        for (int y = 0; y < mapData->cols; ++y) {
+    for (int y = 0; y < mapData->rows; ++y) {
+        for (int x = 0; x < mapData->cols; ++x) {
             char cell = mapData->grid[x][y]; // Access the character at (x, y)
             map_view.set(x, y, cell); // Set the character in the CharMatrix
         }
