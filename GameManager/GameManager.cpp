@@ -710,7 +710,7 @@ void GameManager::logDeadTanks(const std::vector<int>& dead_tanks, int& i, int s
         }
         else if (i == dead_tank && i == size_tanks) {
             i++;
-            logger.logLine("killed", true);
+            logger.logLine("killed", false);
         }
     }
 }
