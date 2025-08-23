@@ -1,0 +1,15 @@
+Bonus Request Document:
+//TODO: continue it 
+We would like to request a bonus for the following contributions we made to the project:
+
+Command Line Enhancements
+We improved the command line functionality by adding support for handling spaces in the arguments. 
+This required careful validation and testing to ensure a smooth and reliable user experience.
+
+Game Visualization
+We extended the project by adding a visualization feature for the game. 
+This provided a more engaging and intuitive way to observe the gameplay and significantly enhanced the usability and presentation of the project.
+
+Detailed Logging System
+We implemented a comprehensive logging mechanism that writes detailed information to a file named detailed. 
+This feature makes it easier to debug, analyze, and track the game’s execution flow, providing greater transparency and control.
