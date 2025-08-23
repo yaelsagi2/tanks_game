@@ -178,8 +178,8 @@ Point GameManager::getNextPosition(const Point& from, Direction dir, int steps) 
     int dx = offset.first;
     int dy = offset.second;
 
-    int new_x = (from.getX() + dx * steps + board->getRows()) % board->getRows();
-    int new_y = (from.getY() + dy * steps + board->getCols()) % board->getCols();
+    int new_y = (from.getY() + dy * steps + board->getRows()) % board->getRows();
+    int new_x = (from.getX() + dx * steps + board->getCols()) % board->getCols();
     return Point(new_x, new_y);
 }
 
@@ -804,7 +804,7 @@ void GameManager::checkShellFutureCollisions(int square) {
     for (Shell* shell : shells) {
         if (this->board->isObjectOnBoard(shell) && !shell->getNewShell()) {
             std::pair <int, int> offset = directionOffset(shell->getDirection());
-            Point new_position(((shell->getPosition().getX() + square * offset.first + board->getRows()) % board->getRows()), ((shell->getPosition().getY() + square * offset.second + board->getCols()) % board->getCols()));
+            Point new_position(((shell->getPosition().getX() + square * offset.first + board->getCols()) % board->getCols()), ((shell->getPosition().getY() + square * offset.second + board->getRows()) % board->getRows()));
             for (TankData& tank : tanks) {
                 if (!this->board->isObjectOnBoard(tank.tank)) { continue; }
                 if (tank.tank->getPosition() == new_position) {// Collision detected
@@ -818,7 +818,7 @@ void GameManager::checkShellFutureCollisions(int square) {
             for (Shell* other_shell : shells) {
             if (!this->board->isObjectOnBoard(other_shell) || other_shell == shell) { continue; } // Skip dead shells and self
                 std::pair <int, int> other_shell_offset = directionOffset(other_shell->getDirection());
-                Point other_new_position(((other_shell->getPosition().getX() + square * other_shell_offset.first + board->getRows()) % board->getRows()), ((other_shell->getPosition().getY() + square * other_shell_offset.second + board->getCols()) % board->getCols()));
+                Point other_new_position(((other_shell->getPosition().getX() + square * other_shell_offset.first + board->getCols()) % board->getCols()), ((other_shell->getPosition().getY() + square * other_shell_offset.second + board->getRows()) % board->getRows()));
                 if (other_shell != shell && other_new_position == new_position) { // Collision detected
                     shells_to_remove.push_back(shell);
                     shells_to_remove.push_back(other_shell);
@@ -989,7 +989,7 @@ std::vector<std::string> GameManager::toAsciiGridFromBoard(GameBoard* board) {
     // This function converts the game board to an ASCII grid representation.
     const size_t rows = board->getRows();
     const size_t cols = board->getCols();
-    std::vector<std::string> grid(rows, std::string(cols, ' '));
+    std::vector<std::string> grid(cols, std::string(rows, ' '));
     GameBoardSatelliteView satellite_view(board, nullptr);
 
     for (size_t y = 0; y < rows; ++y) {

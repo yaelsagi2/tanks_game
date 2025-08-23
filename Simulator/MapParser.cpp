@@ -74,7 +74,7 @@ MapData readMapFile(const std::string& filename, std::vector<std::string>& error
         throw std::runtime_error("invalid map headers");
     }
     std::string line;
-    std::vector<std::vector<char>> grid(rows, std::vector<char>(cols, ' '));
+    std::vector<std::vector<char>> grid(cols, std::vector<char>(rows, ' '));
     while (actual_row < rows && std::getline(input_file, line)) {
         line = normalizeLine(line, cols, actual_row + 6, errors);
         for (int col = 0; col < cols; ++col) { handleCell(line[col], actual_row, col, grid, errors);}
@@ -157,13 +157,13 @@ void handleCell(char cell, int row, int col, std::vector<std::vector<char>>& gri
     // This function handles a single cell in the map and creates the corresponding game object.
 
     if (cell == '#') {
-        grid[row][col] = '#'; // Wall
+        grid[col][row] = '#'; // Wall
     } else if (cell == '@') {
-        grid[row][col] = '@'; // Mine
+        grid[col][row] = '@'; // Mine
     } else if (cell == '1') {
-        grid[row][col] = '1'; // Player 1 tank
+        grid[col][row] = '1'; // Player 1 tank
     } else if (cell == '2') {
-        grid[row][col] = '2'; // Player 2 tank
+        grid[col][row] = '2'; // Player 2 tank
     } else {
         if (!std::isspace(cell)) {
             errors.push_back("Line " + std::to_string(row + 6) +

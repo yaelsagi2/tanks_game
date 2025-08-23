@@ -40,8 +40,8 @@ public:
     /**
      * @brief Constructs SimpleBattleInfo from a SatelliteView and player info.
      * @param view The satellite view of the board.
-     * @param x Number of rows.
-     * @param y Number of columns.
+     * @param x Number of columns.
+     * @param y Number of rows.
      * @param ammo The player's ammo count.
      */
     SimpleBattleInfo(const SatelliteView& view, size_t x, size_t y, int ammo, int player_asked);

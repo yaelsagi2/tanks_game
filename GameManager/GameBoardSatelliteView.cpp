@@ -13,7 +13,7 @@ GameBoardSatelliteView::GameBoardSatelliteView(GameBoard* board, Tank* selfTank)
 char GameBoardSatelliteView::getObjectAt(size_t x, size_t y) const {
     int cols = board->getCols();
     int rows = board->getRows();
-    if (x >= static_cast<size_t>(rows) || y >= static_cast<size_t>(cols)) { // Out of bounds check
+    if (x >= static_cast<size_t>(cols) || y >= static_cast<size_t>(rows)) { // Out of bounds check
         return '&';
     } 
     if (board->isObjectOnBoard(Point(x, y)) == false) { // No object at this position
@@ -51,8 +51,8 @@ std::string GameBoardSatelliteView::getView() const {
 
     int cols = board->getCols();
     int rows = board->getRows();
-    for (int x = 0; x < rows; ++x) {
-        for (int y = 0; y < cols; ++y) {
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < cols; ++x) {
             // Only print if there is an object at this position
             if (board->isObjectOnBoard(Point(x, y))) {
                 char ch = getObjectAt(x, y);

@@ -154,13 +154,13 @@ namespace Algorithm_206480972_206899163 {
         std::pair<int, int> offset = directionOffset(tank->getCanonDir());
         int cols = battle_info.getCols();
         int rows = battle_info.getRows();
-        Point forward_pos((pos.getX() + offset.first + rows) % rows,
-                          (pos.getY() + offset.second + cols) % cols);
+        Point forward_pos((pos.getX() + offset.first + cols) % cols,
+                          (pos.getY() + offset.second + rows) % rows);
 
         // Calculate the position we would reach if we move in escape direction
         std::pair<int, int> escape_offset = directionOffset(escape_dir);
-        Point escape_pos((pos.getX() + escape_offset.first + rows) % rows,
-                         (pos.getY() + escape_offset.second + cols) % cols);
+        Point escape_pos((pos.getX() + escape_offset.first + cols) % cols,
+                         (pos.getY() + escape_offset.second + rows) % rows);
 
         if (forward_pos == escape_pos)
         {
@@ -185,8 +185,8 @@ namespace Algorithm_206480972_206899163 {
         {
             Direction dir = static_cast<Direction>(i);
             std::pair<int, int> offset = directionOffset(dir);
-            Point new_pos((pos.getX() + offset.first + rows) % rows,
-                          (pos.getY() + offset.second + cols) % cols);
+            Point new_pos((pos.getX() + offset.first + cols) % cols,
+                          (pos.getY() + offset.second + rows) % rows);
 
             if (isPositionValid(new_pos) && isPositionSafe(new_pos))
             {
@@ -204,8 +204,8 @@ namespace Algorithm_206480972_206899163 {
             {
                 Direction dir = static_cast<Direction>(i);
                 std::pair<int, int> offset = directionOffset(dir);
-                Point new_pos((pos.getX() + offset.first + rows) % rows,
-                              (pos.getY() + offset.second + cols) % cols);
+                Point new_pos((pos.getX() + offset.first + cols) % cols,
+                              (pos.getY() + offset.second + rows) % rows);
 
                 if (!isPositionValid(new_pos))
                     continue;
@@ -234,8 +234,8 @@ namespace Algorithm_206480972_206899163 {
         for (Direction dir : possible_directions)
         {
             std::pair<int, int> offset = directionOffset(dir);
-            Point new_pos((pos.getX() + offset.first + rows) % rows,
-                          (pos.getY() + offset.second + cols) % cols);
+            Point new_pos((pos.getX() + offset.first + cols) % cols,
+                          (pos.getY() + offset.second + rows) % rows);
 
             double min_distance = cols + rows;
             for (const auto &shell_ptr : shells)
@@ -265,8 +265,8 @@ namespace Algorithm_206480972_206899163 {
         int rows = battle_info.getRows();
         const auto &walls = battle_info.getWalls();
         const auto &mines = battle_info.getMines();
-        Point adjusted_pos((pos.getX() + rows) % rows,
-                           (pos.getY() + cols) % cols);
+        Point adjusted_pos((pos.getX() + cols) % cols,
+                           (pos.getY() + rows) % rows);
         // Check if position is occupied by a wall
         for (const auto &wall : walls)
         {
@@ -319,13 +319,13 @@ namespace Algorithm_206480972_206899163 {
         int dy = b.getY() - a.getY();
         int cols = battle_info.getCols();
         int rows = battle_info.getRows();
-        if (std::abs(dx) > rows / 2)
+        if (std::abs(dx) > cols / 2)
         {
-            dx = (dx > 0) ? dx - rows : dx + rows;
+            dx = (dx > 0) ? dx - cols : dx + cols;
         }
-        if (std::abs(dy) > cols / 2)
+        if (std::abs(dy) > rows / 2)
         {
-            dy = (dy > 0) ? dy - cols : dy + cols;
+            dy = (dy > 0) ? dy - rows : dy + rows;
         }
         return std::sqrt(dx * dx + dy * dy);
     }
@@ -377,8 +377,8 @@ namespace Algorithm_206480972_206899163 {
             if (next != pos)
             {
                 std::pair<int, int> offset = directionOffset(my_tank->getCanonDir());
-                Point forward_pos((pos.getX() + offset.first + rows) % rows,
-                                  (pos.getY() + offset.second + cols) % cols);
+                Point forward_pos((pos.getX() + offset.first + cols) % cols,
+                                  (pos.getY() + offset.second + rows) % rows);
                 if (forward_pos == next)
                 {
                     steps.erase(steps.begin());
@@ -482,8 +482,8 @@ namespace Algorithm_206480972_206899163 {
                 {
                     if (dx == 0 && dy == 0)
                         continue; // Skip current position
-                    Point neighbor((current.getX() + dx + rows) % rows,
-                                   (current.getY() + dy + cols) % cols);
+                    Point neighbor((current.getX() + dx + cols) % cols,
+                                   (current.getY() + dy + rows) % rows);
                     if (!isPointInVector(visited, neighbor) && isPositionValid(neighbor))
                     {
                         visited.push_back(neighbor);
@@ -532,29 +532,29 @@ namespace Algorithm_206480972_206899163 {
         int dx = tank2_pos.getX() - pos.getX();
         int dy = tank2_pos.getY() - pos.getY();
         // Adjust for tunnel effect
-        if (std::abs(dx) > rows / 2)
+        if (std::abs(dx) > cols / 2)
         {
-            dx = (dx > 0) ? dx - rows : dx + rows;
+            dx = (dx > 0) ? dx - cols : dx + cols;
         }
-        if (std::abs(dy) > cols / 2)
+        if (std::abs(dy) > rows / 2)
         {
-            dy = (dy > 0) ? dy - cols : dy + cols;
+            dy = (dy > 0) ? dy - rows : dy + rows;
         }
         // Determine best direction
         if (dx == 0 && dy < 0)
-            return Direction::L;
+            return Direction::U;
         if (dx > 0 && dy < 0)
-            return Direction::DL;
+            return Direction::UR;
         if (dx > 0 && dy == 0)
-            return Direction::D;
+            return Direction::R;
         if (dx > 0 && dy > 0)
             return Direction::DR;
         if (dx == 0 && dy > 0)
-            return Direction::R;
+            return Direction::D;
         if (dx < 0 && dy > 0)
-            return Direction::UR;
+            return Direction::DL;
         if (dx < 0 && dy == 0)
-            return Direction::U;
+            return Direction::L;
         return Direction::UL;
     }
 
@@ -575,8 +575,8 @@ namespace Algorithm_206480972_206899163 {
         for (int step = 0; step < 3; ++step)
         {
             // Move one step forward in direction
-            int next_x = (current.getX() + offset.first + rows) % rows;
-            int next_y = (current.getY() + offset.second + cols) % cols;
+            int next_x = (current.getX() + offset.first + cols) % cols;
+            int next_y = (current.getY() + offset.second + rows) % rows;
             current = Point(next_x, next_y);
             for (const auto &ally_t : ally_tanks)
             {
@@ -644,25 +644,25 @@ namespace Algorithm_206480972_206899163 {
         int dy = to.getY() - from.getY();
         int cols = battle_info.getCols();
         int rows = battle_info.getRows();
-        if (std::abs(dx) > rows / 2)
-            dx = (dx > 0) ? dx - rows : dx + rows;
-        if (std::abs(dy) > cols / 2)
-            dy = (dy > 0) ? dy - cols : dy + cols;
+        if (std::abs(dx) > cols / 2)
+            dx = (dx > 0) ? dx - cols : dx + cols;
+        if (std::abs(dy) > rows / 2)
+            dy = (dy > 0) ? dy - rows : dy + rows;
 
         if (dx == 0 && dy < 0)
-            return Direction::L;
+            return Direction::U;
         if (dx > 0 && dy < 0)
-            return Direction::DL;
+            return Direction::UR;
         if (dx > 0 && dy == 0)
-            return Direction::D;
+            return Direction::R;
         if (dx > 0 && dy > 0)
             return Direction::DR;
         if (dx == 0 && dy > 0)
-            return Direction::R;
+            return Direction::D;
         if (dx < 0 && dy > 0)
-            return Direction::UR;
+            return Direction::DL;
         if (dx < 0 && dy == 0)
-            return Direction::U;
+            return Direction::L;
         return Direction::UL;
     }
 }

@@ -129,8 +129,8 @@ void Tank::rotateRight(int rotationAmount){
 Shell Tank::shoot(int boardWidth, int boardHeight) {
     // Create a Shell object at the current position of the tank, in the direction of the cannon
     std::pair<int, int> offset = directionOffset(canon_dir);
-    int newX = (position.getX() + offset.first + boardHeight) % boardHeight;
-    int newY = (position.getY() + offset.second + boardWidth) % boardWidth;
+    int newY = (position.getY() + offset.second + boardHeight) % boardHeight;
+    int newX = (position.getX() + offset.first + boardWidth) % boardWidth;
 
     // Apply shooting cooldown and decrement ammo count
     ammo_count--;
@@ -144,8 +144,8 @@ void Tank::moveForward(int boardWidth, int boardHeight) {
     int dx = offset.first;
     int dy = offset.second;
 
-    int newX = (position.getX() + dx + boardHeight) % boardHeight;
-    int newY = (position.getY() + dy + boardWidth) % boardWidth;
+    int newY = (position.getY() + dy + boardHeight) % boardHeight;
+    int newX = (position.getX() + dx + boardWidth) % boardWidth;
     position = Point(newX, newY);
 }
 
@@ -155,8 +155,8 @@ void Tank::moveBackward(int boardWidth, int boardHeight) {
     int dx = -offset.first;
     int dy = -offset.second;
 
-    int newX = (position.getX() + dx + boardHeight) % boardHeight;
-    int newY = (position.getY() + dy + boardWidth) % boardWidth;
+    int newY = (position.getY() + dy + boardHeight) % boardHeight;
+    int newX = (position.getX() + dx + boardWidth) % boardWidth;
 
     position = Point(newX, newY);
 }

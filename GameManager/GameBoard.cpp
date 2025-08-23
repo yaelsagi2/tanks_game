@@ -138,7 +138,7 @@ std::vector<Tank*>& GameBoard::getPlayerTanks(int player_id) {
 
 void GameBoard::printBoardState() const {
     // This function prints the current state of the game board
-    std::vector<std::vector<char>> board(rows, std::vector<char>(cols, ' '));
+    std::vector<std::vector<char>> board(cols, std::vector<char>(rows, ' '));
 
     for (const auto& [pos, obj_vec] : object_at) {
         if (obj_vec.empty()) {

@@ -7,7 +7,7 @@ namespace Algorithm_206480972_206899163{
 
 // Constructor: Builds SimpleBattleInfo from a SatelliteView and player info
 SimpleBattleInfo::SimpleBattleInfo(const SatelliteView& view, size_t x, size_t y, int ammo, int player_asked)
-    : rows(x), cols(y), ammo_count(ammo), boardView(x, std::vector<char>(y, ' ')), player_asked_for_info(player_asked) {
+    : rows(y), cols(x), ammo_count(ammo), boardView(x, std::vector<char>(y, ' ')), player_asked_for_info(player_asked) {
     for (size_t i = 0; i < x; ++i) {
         for (size_t j = 0; j < y; ++j) {
             boardView[i][j] = view.getObjectAt(i, j);
@@ -214,7 +214,7 @@ SimpleBattleInfo::SimpleBattleInfo(const SimpleBattleInfo& other)
 // Print the current battle state to the console
 void SimpleBattleInfo::printBattleState() const {
     // Create an empty board
-    std::vector<std::vector<char>> board(rows, std::vector<char>(cols, ' '));
+    std::vector<std::vector<char>> board(cols, std::vector<char>(rows, ' '));
     for (const auto& wall : walls) { // Place walls
         Point pos = wall->getPosition();
         board[pos.getX()][pos.getY()] = '#';

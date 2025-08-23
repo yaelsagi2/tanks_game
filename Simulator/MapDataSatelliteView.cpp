@@ -18,7 +18,7 @@ MapDataSatelliteView::MapDataSatelliteView(MapData* mapData) {
 // Returns a character representing the object at (x, y)
 char MapDataSatelliteView::getObjectAt(size_t x, size_t y) const {
 
-    if (x >= static_cast<size_t>(rows) || y >= static_cast<size_t>(cols)) { // Out of bounds check
+    if (x >= static_cast<size_t>(cols) || y >= static_cast<size_t>(rows)) { // Out of bounds check
         return '&';
     } 
     char cell = map_view.get(x, y); // Get the character from the CharMatrix

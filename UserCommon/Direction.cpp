@@ -24,14 +24,14 @@ std::pair<int, int> directionOffset(Direction dir) {
     // Returns the offset (x, y) for a given Direction
     // The offset represents the change in position when moving in the specified direction
     switch (dir) {
-        case Direction::D:  return {1, 0};
+        case Direction::D:  return {0, 1};
         case Direction::DR: return {1, 1};
-        case Direction::R:  return {0, 1};
-        case Direction::UR: return {-1, 1};
-        case Direction::U:  return {-1, 0};
+        case Direction::R:  return {1, 0};
+        case Direction::UR: return {1, -1};
+        case Direction::U:  return {0, -1};
         case Direction::UL: return {-1, -1};
-        case Direction::L:  return {0, -1};
-        case Direction::DL: return {1, -1};
+        case Direction::L:  return {-1, 0};
+        case Direction::DL: return {-1, 1};
         case Direction::None: return {0,0};
     }
     return {0, 0}; // Default case

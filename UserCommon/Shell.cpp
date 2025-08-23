@@ -59,8 +59,8 @@ void Shell::move(int board_width, int board_height) {
     int dx = offset.first;
     int dy = offset.second;
 
-    int newX = (position.getX() + 2 * dx + board_height) % board_height;
-    int newY = (position.getY() + 2 * dy + board_width) % board_width;
+    int newY = (position.getY() + 2 * dy + board_height) % board_height;
+    int newX = (position.getX() + 2 * dx + board_width) % board_width;
 
     Point position = Point(newX, newY);
     this->setPosition(position);
