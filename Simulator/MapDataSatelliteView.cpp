@@ -7,7 +7,7 @@ MapDataSatelliteView::MapDataSatelliteView(MapData* mapData) {
     for (int y = 0; y < mapData->rows; ++y) {
         for (int x = 0; x < mapData->cols; ++x) {
             char cell = mapData->grid[x][y]; // Access the character at (x, y)
-            map_view.set(x, y, cell); // Set the character in the CharMatrix
+            map_view.set(y, x, cell); // Set the character in the CharMatrix
         }
     }
     rows = mapData->rows; // Set the number of rows
@@ -21,6 +21,6 @@ char MapDataSatelliteView::getObjectAt(size_t x, size_t y) const {
     if (x >= static_cast<size_t>(cols) || y >= static_cast<size_t>(rows)) { // Out of bounds check
         return '&';
     } 
-    char cell = map_view.get(x, y); // Get the character from the CharMatrix
+    char cell = map_view.get(y, x); // Get the character from the CharMatrix
     return cell; // Return the character representing the object at (x, y)
 }
