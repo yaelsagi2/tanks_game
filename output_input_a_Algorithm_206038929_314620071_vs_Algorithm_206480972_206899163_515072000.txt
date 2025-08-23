@@ -1,7 +1,0 @@
-GetBattleInfo, GetBattleInfo, GetBattleInfo
-GetBattleInfo, GetBattleInfo, GetBattleInfo
-GetBattleInfo, GetBattleInfo, RotateLeft45
-GetBattleInfo, GetBattleInfo, GetBattleInfo
-GetBattleInfo, GetBattleInfo, MoveForward (ignored)
-GetBattleInfo, GetBattleInfo, RotateLeft45
-GetBattleInfo, GetBattleInfo, Shoot

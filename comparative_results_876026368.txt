@@ -1,8 +1,0 @@
-game_map=maps/input_a.txt
-algorithm1=algorithm_folder/Algorithm_206038929_314620071.so
-algorithm2=Algorithm/Algorithm_206480972_206899163.so
-
-
-Player 2 won with 1 tanks still alive
-0
-
