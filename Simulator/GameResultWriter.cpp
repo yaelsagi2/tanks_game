@@ -63,9 +63,9 @@ std::string GameResultWriter::getMessageResult(const GameResultEx* game_result) 
 }
 
 // This function writes the comparative results to a file.
-void GameResultWriter::writeComparativeResults(const std::string& game_map_path, const std::string& algo1_so, const std::string& algo2_so, const std::vector<std::pair<std::string, GameResultEx>>& results, int, int)
+void GameResultWriter::writeComparativeResults(const std::string& game_map_path,const std::string& game_managers_folder, const std::string& algo1_so, const std::string& algo2_so, const std::vector<std::pair<std::string, GameResultEx>>& results, int, int)
 {
-    const std::string filename = "comparative_results_" + getTimestamp() + ".txt";
+    const std::string filename =  game_managers_folder + "/comparative_results_" + getTimestamp() + ".txt";
     std::ofstream file(filename);
     std::ostream* out = file.is_open() ? static_cast<std::ostream*>(&file) : static_cast<std::ostream*>(&std::cout);
     if (!file.is_open()) { std::cerr << "Warning: could not open '" << filename << "' for writing. Falling back to stdout.\n";}
@@ -120,7 +120,7 @@ Algorithm_206038929_314620071 35
 Algorithm_207174533_321321945 13
 
 */
-void GameResultWriter::writeCompetitiveResults( const std::string& game_maps_folder,
+void GameResultWriter::writeCompetitiveResults( const std::string& game_maps_folder, const std::string& algorithms_folder,
     const std::string& game_manager, const std::vector<std::pair<std::string, int>>& winners) {
     // This function writes the competitive results to a file.
     // Sort by wins (desc), then by name (asc) for determinism
@@ -132,7 +132,7 @@ void GameResultWriter::writeCompetitiveResults( const std::string& game_maps_fol
         });
 
     // Build output filename based on game_manager
-    const std::string filename = "competition_" + getTimestamp() + ".txt";
+    const std::string filename = algorithms_folder + "/competition_" + getTimestamp() + ".txt";
 
     std::ofstream file(filename);
     std::ostream* out = nullptr;
@@ -145,7 +145,9 @@ void GameResultWriter::writeCompetitiveResults( const std::string& game_maps_fol
     }
     // Write header
     (*out) << "game_maps_folder=" << game_maps_folder << '\n';
-    (*out) << "game_manager="     << game_manager     << '\n';
+    // Remove .so suffix from game_manager name for printing
+    std::string gm_name = removeSoSuffix(game_manager);
+    (*out) << "game_manager="     << gm_name     << '\n';
     (*out) << '\n';
     // Write sorted winners
     for (const auto& [name, wins] : sorted) {

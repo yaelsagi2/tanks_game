@@ -1,0 +1,2 @@
+Line 12 is too short, padding with spaces.
+Line 13: missing, padding with spaces.

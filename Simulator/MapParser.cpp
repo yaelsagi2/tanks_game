@@ -58,19 +58,19 @@ MapData readMapFile(const std::string& filename, std::vector<std::string>& error
     std::ifstream input_file(filename);
     std::vector<std::string> header_errors;
     if (!input_file.is_open()) {
-        std::cerr << "Failed to open file " + filename + " File does not exist or is not accessible." << std::endl;
+        std::cerr << "Failed to open file " << filename << ". File does not exist or is not accessible. Skipping... " << filename << std::endl;
         throw std::runtime_error("map file does not exist");
     }
     int max_steps, num_shells, rows, cols, actual_row = 0;
     std::string skip_line;
     if(!std::getline(input_file, skip_line)) // Skip the first line (map name)
     {
-        std::cerr << "Invalid map: missing map name" << std::endl;
+        std::cerr << "Invalid map: missing map name in file " << filename << ". Skipping... " << filename << std::endl;
         throw std::runtime_error("map name is missing");
     }
     if (!readHeadersLine(input_file, max_steps, num_shells, rows, cols, header_errors)) {
-        std::cerr << "Invalid map headers." << std::endl;
-        for (const auto& msg : header_errors) { std::cerr << msg << std::endl; }
+        std::cerr << "ERROR: Invalid map headers in file '" << filename << "'. Skipping this map.\nSummary: " << (header_errors.empty() ? "Unknown header error." : header_errors.back()) << std::endl;
+        // All header_errors will still be written to input_errors.txt below
         throw std::runtime_error("invalid map headers");
     }
     std::string line;
@@ -86,11 +86,18 @@ MapData readMapFile(const std::string& filename, std::vector<std::string>& error
     }
     if (std::getline(input_file, line)) { errors.push_back("Extra lines beyond declared Rows ignored.");}
     if (!errors.empty()) {
-        std::ofstream errorFile("input_errors.txt");
+        // Extract base filename without path and strip .txt for unique error file
+        std::string base = filename;
+        size_t last_slash = base.find_last_of("/\\");
+        if (last_slash != std::string::npos) base = base.substr(last_slash + 1);
+        size_t last_dot = base.rfind(".txt");
+        if (last_dot != std::string::npos && last_dot == base.size() - 4) base = base.substr(0, base.size() - 4);
+        std::string error_filename = "input_errors_" + base + ".txt";
+        std::ofstream errorFile(error_filename);
         if (errorFile.is_open()) {
             for (const std::string& msg : errors) { errorFile << msg << std::endl; }
             errorFile.close();
-        } else { std::cerr << "Failed to write to input_errors.txt" << std::endl;}
+        } else { std::cerr << "Failed to write to " << error_filename << std::endl;}
     }
     return MapData(max_steps, num_shells, rows, cols, grid);
 }

@@ -1,0 +1,6 @@
+GetBattleInfo, GetBattleInfo, GetBattleInfo, GetBattleInfo, GetBattleInfo, GetBattleInfo
+RotateLeft45, RotateRight45, RotateRight90, RotateLeft90, RotateLeft45, RotateRight90
+Shoot (ignored), Shoot (ignored), RotateRight45, RotateLeft45, Shoot (ignored), RotateRight45
+RotateRight90, RotateLeft90, Shoot (ignored), Shoot (ignored), MoveForward (killed), Shoot (ignored)
+RotateRight45, RotateLeft45, MoveForward (killed), MoveForward (killed), killed, MoveForward
+Player 2 won with 3 tanks still alive

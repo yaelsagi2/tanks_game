@@ -72,6 +72,7 @@ public:
      */
     static void writeComparativeResults(
         const std::string& game_map_path,
+        const std::string& game_managers_folder,
         const std::string& algo1_so,
         const std::string& algo2_so,
         const std::vector<std::pair<std::string, GameResultEx>>& results,
@@ -87,6 +88,7 @@ public:
      */
     static void writeCompetitiveResults(
         const std::string& game_maps_folder,
+        const std::string& algorithms_folder,
         const std::string& game_manager,
         const std::vector<std::pair<std::string, int>>& winners
     );

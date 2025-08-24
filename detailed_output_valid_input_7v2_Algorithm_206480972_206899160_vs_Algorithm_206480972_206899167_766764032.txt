@@ -1,0 +1,141 @@
+=== Game start ===
+Rows:8, Cols: 10, Max Steps: 6000, Num Shells for each tank: 25
+Initial tanks position:
+Tank 0 of Player 1 starts at (0, 0).
+Tank 1 of Player 1 starts at (0, 1).
+Tank 2 of Player 1 starts at (2, 0).
+Tank 3 of Player 1 starts at (4, 0).
+Tank 0 of Player 2 starts at (4, 2).
+Tank 4 of Player 1 starts at (4, 5).
+Tank 5 of Player 1 starts at (6, 0).
+Tank 6 of Player 1 starts at (7, 1).
+Tank 1 of Player 2 starts at (7, 4).
+Step 1: Tank 0 requested battle info.
+Step 1: Tank 0 of player 1 performed GetBattleInfo
+Step 1: Tank 1 requested battle info.
+Step 1: Tank 1 of player 1 performed GetBattleInfo
+Step 1: Tank 2 requested battle info.
+Step 1: Tank 2 of player 1 performed GetBattleInfo
+Step 1: Tank 3 requested battle info.
+Step 1: Tank 3 of player 1 performed GetBattleInfo
+Step 1: Tank 0 requested battle info.
+Step 1: Tank 0 of player 2 performed GetBattleInfo
+Step 1: Tank 4 requested battle info.
+Step 1: Tank 4 of player 1 performed GetBattleInfo
+Step 1: Tank 5 requested battle info.
+Step 1: Tank 5 of player 1 performed GetBattleInfo
+Step 1: Tank 6 requested battle info.
+Step 1: Tank 6 of player 1 performed GetBattleInfo
+Step 1: Tank 1 requested battle info.
+Step 1: Tank 1 of player 2 performed GetBattleInfo
+
+Step 2: Tank 0 rotated right by 2/8.
+Step 2: Tank 0 of player 1 performed RotateRight90
+Step 2: Tank 1 rotated right by 2/8.
+Step 2: Tank 1 of player 1 performed RotateRight90
+Step 2: Tank 2 rotated left by 2/8.
+Step 2: Tank 2 of player 1 performed RotateLeft90
+Step 2: Tank 3 rotated left by 1/8.
+Step 2: Tank 3 of player 1 performed RotateLeft45
+Step 2: Tank 0 rotated left by 2/8.
+Step 2: Tank 0 of player 2 performed RotateLeft90
+Step 2: Tank 4 rotated right by 1/8.
+Step 2: Tank 4 of player 1 performed RotateRight45
+Step 2: Tank 5 rotated left by 1/8.
+Step 2: Tank 5 of player 1 performed RotateLeft45
+Step 2: Tank 6 rotated left by 1/8.
+Step 2: Tank 6 of player 1 performed RotateLeft45
+Step 2: Tank 1 rotated left by 2/8.
+Step 2: Tank 1 of player 2 performed RotateLeft90
+
+Step 3: Tank 0 rotated right by 1/8.
+Step 3: Tank 0 of player 1 performed RotateRight45
+Step 3: Tank 1 rotated right by 1/8.
+Step 3: Tank 1 of player 1 performed RotateRight45
+Step 3: Tank 2 rotated left by 1/8.
+Step 3: Tank 2 of player 1 performed RotateLeft45
+Step 3: Tank 3 moved forward to (3, 1).
+Step 3: Tank 3 of player 1 performed MoveForward
+Step 3: Tank 0 of player 2 performed Shoot
+Step 3: Tank 4 moved forward to (3, 4).
+Step 3: Tank 4 of player 1 performed MoveForward
+Step 3: Tank 5 of player 1 performed Shoot
+Step 3: Tank 6 moved forward to (6, 2).
+Step 3: Tank 6 of player 1 performed MoveForward
+Step 3: Tank 1 of player 2 performed Shoot
+
+Step 4: Tank 0 moved forward to (1, 7).
+Step 4: Tank 0 of player 1 performed MoveForward
+Step 4: Tank 1 moved forward to (1, 0).
+Step 4: Tank 1 of player 1 performed MoveForward
+Step 4: Tank 2 of player 1 performed Shoot
+Step 4: Tank 3 rotated left by 2/8.
+Step 4: Tank 3 of player 1 performed RotateLeft90
+Step 4: Tank 0 rotated right by 2/8.
+Step 4: Tank 0 of player 2 performed RotateRight90
+Step 4: Tank 4 rotated right by 1/8.
+Step 4: Tank 4 of player 1 performed RotateRight45
+Step 4: Tank 5 rotated right by 2/8.
+Step 4: Tank 5 of player 1 performed RotateRight90
+Step 4: Tank 6 rotated left by 1/8.
+Step 4: Tank 6 of player 1 performed RotateLeft45
+Step 4: Tank 1 rotated right by 2/8.
+Step 4: Tank 1 of player 2 performed RotateRight90
+Shell 2 hit Tank 3 at (3, 1). This Tank is player's 1 and it destroyed.
+Shell's of player5 collided with Tank 0 of player 2 at (4, 2). Both are destroyed.
+Shell 0 moved to (4, 7)
+Shell 1 moved to (7, 1)
+
+Step 5: Tank 0 rotated right by 2/8.
+Step 5: Tank 0 of player 1 performed RotateRight90
+Step 5: Tank 1 rotated right by 1/8.
+Step 5: Tank 1 of player 1 performed RotateRight45
+Step 5: Tank 2 rotated left by 2/8.
+Step 5: Tank 2 of player 1 performed RotateLeft90
+Step 5: Tank 4 moved forward to (3, 3).
+Step 5: Tank 4 of player 1 performed MoveForward
+Step 5: Tank 5 rotated right by 1/8.
+Step 5: Tank 5 of player 1 performed RotateRight45
+Step 5: Tank 6 moved forward to (6, 3).
+Step 5: Tank 6 of player 1 performed MoveForward
+Step 5: Tank 1 rotated right by 1/8.
+Step 5: Tank 1 of player 2 performed RotateRight45
+Shell 0 moved to (4, 5)
+Shell 1 moved to (7, 7)
+
+Step 6: Tank 0 requested battle info.
+Step 6: Tank 0 of player 1 performed GetBattleInfo
+Step 6: Tank 1 requested battle info.
+Step 6: Tank 1 of player 1 performed GetBattleInfo
+Step 6: Tank 2 requested battle info.
+Step 6: Tank 2 of player 1 performed GetBattleInfo
+Step 6: Tank 4 requested battle info.
+Step 6: Tank 4 of player 1 performed GetBattleInfo
+Step 6: Tank 5 requested battle info.
+Step 6: Tank 5 of player 1 performed GetBattleInfo
+Step 6: Tank 6 requested battle info.
+Step 6: Tank 6 of player 1 performed GetBattleInfo
+Step 6: Tank 1 requested battle info.
+Step 6: Tank 1 of player 2 performed GetBattleInfo
+Shell 0 moved to (4, 3)
+Shell 1 moved to (7, 5)
+
+Step 7: Tank 0 rotated right by 2/8.
+Step 7: Tank 0 of player 1 performed RotateRight90
+Step 7: Tank 1 rotated right by 2/8.
+Step 7: Tank 1 of player 1 performed RotateRight90
+Step 7: Tank 2 rotated right by 2/8.
+Step 7: Tank 2 of player 1 performed RotateRight90
+Step 7: Tank 4 rotated right by 2/8.
+Step 7: Tank 4 of player 1 performed RotateRight90
+Step 7: Tank 5 rotated left by 2/8.
+Step 7: Tank 5 of player 1 performed RotateLeft90
+Step 7: Tank 6 rotated right by 2/8.
+Step 7: Tank 6 of player 1 performed RotateRight90
+Step 7: Tank 1 rotated left by 2/8.
+Step 7: Tank 1 of player 2 performed RotateLeft90
+Shell's of player1 collided with Tank 1 of player 2 at (7, 4). Both are destroyed.
+Shell 0 moved to (4, 1)
+
+== Final Result ==
+Player 1 won with 6 tanks still alive

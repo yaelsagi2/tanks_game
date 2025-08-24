@@ -1,0 +1,4 @@
+Line 7 is too long, trimming.
+Line 8 is too short, padding with spaces.
+Line 9 is too short, padding with spaces.
+Extra lines beyond declared Rows ignored.

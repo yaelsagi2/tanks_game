@@ -66,50 +66,38 @@ std::string Simulator::satelliteViewToString(const SatelliteView* view, std::siz
 }
 
 void Simulator::runComparativeMode(const ParsedArgs& args) {
-
+// This function runs the simulator in comparative mode
     if (countFilesWithPrefixAndExtension(args.game_managers_folder, "GameManager", "so") == 0) {
         cerr << "game manager folder should contain at least one game manager, exiting" << endl;
         exit(1);
     }
-
     // Same players/algorithms & same map for all managers
     auto& play_and_algorithm_registrar = AlgorithmRegistrar::getAlgorithmRegistrar();
     auto& game_managers_registrar     = GameManagerRegistrar::getGameManagerRegistrar();
-
     std::vector<std::string> errors;
     auto map_data = readMapFile(args.game_map, errors); // tasks will read again by filename
-
     // Choose the two algorithms (mirrors your original code)
     const int player1_index = 1;
     const int player2_index = 2;
     auto algorithm1 = play_and_algorithm_registrar.getAlgorithmRegistrar().getAt(0);
     auto algorithm2 = play_and_algorithm_registrar.getAlgorithmRegistrar().getAt(1);
-
     // Shared collection for results
     std::vector<std::pair<std::string, GameResultEx>> results;
     std::mutex results_mtx;
-
     // Queue of tasks
     ConcurrentQueue<Task> queue;
-
     // Enqueue: one task per GameManager factory, with filename
     int gm_index = 0;
     for (auto gm_factory = game_managers_registrar.begin(); gm_factory != game_managers_registrar.end(); ++gm_factory, ++gm_index) {
         const std::string& gm_filename = game_managers_registrar.getFilenameAt(gm_index);
-        Task t{
-            args.game_map,
-            player1_index,
-            player2_index,
-            algorithm1.getPlayerFactory(),
-            algorithm1.getPlayerName(),
-            algorithm2.getPlayerFactory(),
-            algorithm2.getPlayerName(),
-            algorithm1.getTankAlgorithmFactory(),
-            algorithm2.getTankAlgorithmFactory(),
-            *gm_factory,
-            args.verbose,
-            nullptr, // we are collecting results, not writing files
-            gm_filename // pass the filename as the last argument
+        Task t{args.game_map, player1_index, player2_index,
+                algorithm1.getPlayerFactory(), algorithm1.getPlayerName(),
+                algorithm2.getPlayerFactory(), algorithm2.getPlayerName(),
+                algorithm1.getTankAlgorithmFactory(), algorithm2.getTankAlgorithmFactory(),
+                *gm_factory,
+                args.verbose,
+                nullptr, // we are collecting results, not writing files
+                gm_filename // pass the filename as the last argument
         };
 
         // Collect results thread-safely
@@ -131,13 +119,12 @@ void Simulator::runComparativeMode(const ParsedArgs& args) {
 
     // No more tasks will be added
     queue.close();
-
     // Worker pool
-    const unsigned num_threads = args.num_threads;
-
+    int num_threads = args.num_threads;
+    if (queue.size() <= num_threads) { num_threads = queue.size(); }
     std::vector<std::thread> workers;
     workers.reserve(num_threads);
-    for (unsigned i = 0; i < num_threads; ++i) {
+    for (int i = 0; i < num_threads; ++i) {
         workers.emplace_back([&queue] {
             Task task;
             while (queue.pop(task)) {
@@ -147,14 +134,8 @@ void Simulator::runComparativeMode(const ParsedArgs& args) {
     }
     for (auto& th : workers) th.join();
 
-    GameResultWriter::writeComparativeResults(
-        args.game_map,
-        args.algorithm1,
-        args.algorithm2,
-        results,
-        map_data.rows,
-        map_data.cols
-    );
+    GameResultWriter::writeComparativeResults( args.game_map,args.game_managers_folder, args.algorithm1, args.algorithm2,
+        results, map_data.rows, map_data.cols);
 }
 
 std::vector<std::pair<std::string, int>>
@@ -235,6 +216,7 @@ void Simulator::runCompetitionMode(const ParsedArgs& args) {
                 gm_factory,
                 args.verbose,
                 &output_mutex,
+                "",
                 algo1.getPlayerName(),
                 algo2.getPlayerName()
             };
@@ -263,12 +245,11 @@ void Simulator::runCompetitionMode(const ParsedArgs& args) {
     // Close the queue so workers stop when exhausted
     queue.close();
 
-    // Decide how many threads to use (you can make this an arg if you want)
-    const unsigned num_threads = args.num_threads;
-
+    int num_threads = args.num_threads;
+    if (queue.size() <= num_threads) { num_threads = queue.size(); }
     std::vector<std::thread> workers;
     workers.reserve(num_threads);
-    for (unsigned i = 0; i < num_threads; ++i) {
+    for (int i = 0; i < num_threads; ++i) {
         workers.emplace_back([&queue] {
             Task task;
             while (queue.pop(task)) {
@@ -279,10 +260,8 @@ void Simulator::runCompetitionMode(const ParsedArgs& args) {
 
     // Join
     for (auto& th : workers) th.join();
-
     auto winners_vector = sortAndConvertMap(player_scores);
-
-    GameResultWriter::writeCompetitiveResults(args.game_maps_folder,
+    GameResultWriter::writeCompetitiveResults(args.game_maps_folder, args.algorithms_folder,
                                               args.game_manager_so,
                                               winners_vector);
 }

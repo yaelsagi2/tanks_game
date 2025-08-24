@@ -19,7 +19,7 @@ Competition mode – run a tournament of multiple algorithms across multiple gam
 
 ## Approved Implementation Choices
 
-1. We implemented a `Player` class and corresponding `Algorithm`, an advanced strategy adapted for ass
+1. We implemented a `Player` class and corresponding `Algorithm`, an advanced strategy adapted for assignment3
 2. We extended our static multiton Logger design to ensure synchronized logging across all GameManager instances and Simulator threads.
 3. All Managers and Algorithms are compiled to `.so` files and loaded via a registrar mechanism. Validation is performed on load.
 4. Multithreading is used to improve runtime performance in both modes.
@@ -148,7 +148,7 @@ Runs a tournament where all algorithms in the folder compete across all maps.
 Pairing logic ensures each algorithm competes against multiple opponents per map.
 
 Output written to:
-competition_<time>.txt (under algorithms_folder).
+competition_<time>.txt 
 
 Example structure:
 

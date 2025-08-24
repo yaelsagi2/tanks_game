@@ -50,6 +50,10 @@ public:
         cv_.notify_all();
     }
 
+    int size() {
+        return q_.size();
+    }
+
 private:
     std::deque<T> q_; ///< Underlying queue storage
     std::mutex m_; ///< Mutex for thread safety

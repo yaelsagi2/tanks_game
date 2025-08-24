@@ -1,0 +1,25 @@
+GetBattleInfo, GetBattleInfo, GetBattleInfo
+RotateRight90, RotateLeft90, MoveForward
+RotateRight90, RotateLeft45, RotateLeft45
+MoveForward, MoveForward (ignored), Shoot
+RotateRight45, RotateLeft45, RotateLeft90
+GetBattleInfo, GetBattleInfo, GetBattleInfo
+RotateLeft90, RotateLeft90, RotateLeft45
+RotateLeft45, RotateLeft45, Shoot (ignored)
+Shoot, Shoot, RotateLeft90
+RotateRight90, RotateRight90, RotateLeft45
+GetBattleInfo, GetBattleInfo, GetBattleInfo
+RotateRight90, RotateLeft90, MoveForward (ignored)
+RotateRight90, RotateLeft45, MoveForward (ignored)
+MoveForward, MoveForward, RotateLeft45
+MoveForward, RotateLeft45, Shoot (ignored)
+GetBattleInfo, GetBattleInfo, GetBattleInfo
+RotateLeft90, RotateLeft90, RotateLeft45
+Shoot (ignored), Shoot (ignored), Shoot (ignored)
+MoveForward (ignored), MoveForward (ignored), RotateLeft90
+MoveForward (ignored), MoveForward (ignored), RotateLeft45
+GetBattleInfo, GetBattleInfo, GetBattleInfo
+RotateLeft90, RotateLeft90, MoveForward
+Shoot (ignored), Shoot (ignored), MoveForward
+MoveForward, MoveForward (killed), MoveForward (killed)
+Player 2 won with 1 tanks still alive
