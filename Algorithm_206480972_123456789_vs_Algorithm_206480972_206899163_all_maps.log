@@ -1,0 +1,145 @@
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/input_a.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/input_errors.txt
+==============================
+Invalid map headers.
+Line 2: expected header 'MaxSteps=...', found 'Extra lines beyond declared Rows ignored.'
+Missing MaxSteps value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/input_errors.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_bad_char.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_cols_meta.txt
+==============================
+Invalid map headers.
+Line 5: expected header 'Cols=...', found '1'
+Missing Cols value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_cols_meta.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_max_steps.txt
+==============================
+Invalid map headers.
+Line 2: expected key 'MaxSteps', found 'NumShells'
+Missing MaxSteps value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_max_steps.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_rows_meta.txt
+==============================
+Invalid map headers.
+Line 4: expected key 'Rows', found 'Cols'
+Missing Rows value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_rows_meta.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_no_player2.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/recorded_game.mxr
+==============================
+Invalid map headers.
+Line 2: expected header 'MaxSteps=...', found empty line
+Missing MaxSteps value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/recorded_game.mxr
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_extra_cols.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_extra_rows.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_2v7.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_3v3_P1_trapped.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_3v3_P2_trapped.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_7v2.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_complex.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_minefield.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_simple.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_missing_rows.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_mixed_size.txt
+==============================
+
+
+
+==============================
+Running: Algorithm/Algorithm_206480972_206899163.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_short_rows.txt
+==============================
+
+
+

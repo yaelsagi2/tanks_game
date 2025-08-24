@@ -83,6 +83,9 @@ private:
      */
     static std::vector<std::pair<int, int>> pairsForMap(int number_of_algorithms, int number_of_maps);
 
+    std::string satelliteViewToString(const SatelliteView* view, std::size_t width, std::size_t height);
+
+
     std::size_t countFilesWithPrefixAndExtension(const std::string& dir, const std::string& prefix = "", const std::string& ext = "");
 
     std::vector<AbstractGameManager*> game_managers; ///< List of game manager instances

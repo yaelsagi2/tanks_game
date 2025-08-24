@@ -19,6 +19,20 @@ namespace Algorithm_206480972_206899163 {
           shell_threat_radius(THREAT_RADIUS),
           ask_for_info_interval(INFO_INTERVAL) {}
 
+    int HybridTankAlgorithm::getIndex() {
+        return tank_index;
+    }
+
+    void HybridTankAlgorithm::setDefensive() {
+        m_defensive = true;
+        m_offensive = false;
+    }
+
+    void HybridTankAlgorithm::setOffensive() {
+        m_offensive = true;
+        m_defensive = false;
+    }
+
     // Updates the internal state of the algorithm based on the provided battle information
     void HybridTankAlgorithm::updateBattleInfo(BattleInfo &info)
     {
@@ -122,12 +136,13 @@ namespace Algorithm_206480972_206899163 {
             }
             else
             {
-                req = getNextChaseAction(tank); // Chase Algorithm
+                // if( m_defensive) { req = ActionRequest::Shoot; }
+                // else {
+                     req = getNextChaseAction(tank); }
             }
             updateStateAfterReq(req);
             return req;
         }
-    }
 
     ActionRequest HybridTankAlgorithm::getNextAvoidAction(const Tank *tank)
     {
@@ -665,13 +680,5 @@ namespace Algorithm_206480972_206899163 {
             return Direction::L;
         return Direction::UL;
     }
-}
-
-
-
-
-
-
-
-
+}// namespace Algorithm_206480972_206899163
 

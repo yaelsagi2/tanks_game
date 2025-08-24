@@ -40,13 +40,23 @@ struct OutcomeKeyHash {
     }
 };
 
+struct GameResultEx {
+	int winner;
+	GameResult::Reason reason;
+    std::vector <size_t> remaining_tanks;
+    size_t rounds;
+    std::string game_map_grid;
+};
+
 /**
  * @brief Represents a group of GameResults with the same outcome.
  */
 struct Group {
     std::vector<std::string> names;      ///< Names of GameResult objects in this bucket
-    const GameResult* sample = nullptr;  ///< Representative for rounds/state printing
+    const GameResultEx* sample = nullptr;  ///< Representative for rounds/state printing
 };
+
+
 
 /**
  * @brief Utility class for writing and formatting game results.
@@ -64,7 +74,7 @@ public:
         const std::string& game_map_path,
         const std::string& algo1_so,
         const std::string& algo2_so,
-        const std::vector<std::pair<std::string, GameResult>>& results,
+        const std::vector<std::pair<std::string, GameResultEx>>& results,
         int map_width,
         int map_height
     );
@@ -85,7 +95,7 @@ private:
     /**
      * @brief Returns a formatted message for a game result.
      */
-    static std::string getMessageResult(const GameResult& game_result);
+    static std::string getMessageResult(const GameResultEx* game_result);
 
     /**
      * @brief Returns a formatted list of game managers.
@@ -114,5 +124,6 @@ private:
 
     static std::string satelliteViewToString(const SatelliteView* view, std::size_t width, std::size_t height);
 
+    static std::string removeSoSuffix(const std::string& s);
 };
 

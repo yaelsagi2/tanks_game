@@ -28,7 +28,6 @@ void Logger::open(const std::string& inputFilename) {
     if (!detailed_out.is_open()) {
         std::cerr << "Logger: Failed to open " << detailed_path << "\n";
     }
-    std::cout << "Logger opening files: " << regular_path << " and " << detailed_path << std::endl;
 }
 
 Logger::~Logger() {

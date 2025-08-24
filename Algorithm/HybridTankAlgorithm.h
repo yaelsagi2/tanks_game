@@ -27,6 +27,8 @@ namespace Algorithm_206480972_206899163 {
         SimpleBattleInfo battle_info;  ///< Battle information for the tank.
         int ask_for_info_interval;    ///< Interval for asking for battle info.
         int current_step = 1;             ///< Current step in the game.
+        bool m_offensive = false;         ///< Offensive mode flag
+        bool m_defensive = true;        ///< Defensive mode flag
 
         // internal state
         std::vector<Point> future_steps; ///< Predicted future steps for the tank.
@@ -67,6 +69,10 @@ namespace Algorithm_206480972_206899163 {
          * @return The next ActionRequest to avoid threats.
          */
         ActionRequest getNextAvoidAction(const Tank* tank);
+
+        int getIndex();
+        void setDefensive();
+        void setOffensive();
 
         /**
          * @brief Finds the best escape direction for the tank.

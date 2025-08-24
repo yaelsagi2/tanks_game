@@ -8,12 +8,12 @@
 #include "GameBoardSatelliteView.h"
 #include "Logger.h"
 #include "../UserCommon/TimeStamp.h"
-
 #include <memory>
 #include <vector>
 #include <list>
 #include <iostream>
 #include <algorithm>
+
 using namespace UserCommon_206480972_206899163;
 namespace GameManager_206480972_206899163 {
     // constructor
@@ -405,7 +405,9 @@ GameResult GameManager::runGameLoop() {
         }
         updateGameStatus();
         recordFrameIfNeeded();
-        current_step++;
+        if (!game_over) {  // Exit if the game is over
+            current_step++;
+        }
     }
     return getGameResult(); // Return the final game result
 }
@@ -425,7 +427,6 @@ void GameManager::updateGameStatus() {
         const int extra_steps_given = 40;
         game_over = true;
         logger.logLineDetailed("Game ended in a tie: no ammo left after " + std::to_string(extra_steps_given) + " steps.");
-        // writeGameResult(); // Exit if the game is over
     }
     // updating Game State
     for (TankData& td : tanks) {
@@ -484,8 +485,10 @@ void GameManager::checkShellWallCollisions() {
     std::vector<Shell*> shells_to_remove;
     std::vector<Wall*> walls_to_remove;
     for (Shell* shell : shells) {
+        if (!this->board->isObjectOnBoard(shell)) { continue; }
         Point shell_pos = shell->getPosition();
         for (Wall* wall : walls) {
+            if (!this->board->isObjectOnBoard(wall)) { continue; }
             if (wall->getPosition() == shell_pos) {
                 // Collision detected
                 if (wall->getHitCount() == 0) {
@@ -548,6 +551,7 @@ void GameManager::checkShellTankCollisions() {
     std::vector<Shell*> shells_to_remove;
     std::vector<Tank*> tanks_to_remove;
     for (Shell* shell : shells) {
+        if (!this->board->isObjectOnBoard(shell)) {continue;}
         Point shell_pos = shell->getPosition();
         for (Tank* tank : tanks) {
             if (!this->board->isObjectOnBoard(tank)) {continue;}
@@ -579,19 +583,19 @@ void GameManager::checkTankMineCollisions() {
     const std::vector<Mine*>& mines = board->getMines();
     const std::vector<Tank*>& tanks = board->getAllTanks();
     for (Mine* mine : mines) {
+        if (!this->board->isObjectOnBoard(mine)) {continue;}
         Point mine_pos = mine->getPosition();
         for (Tank* tank: tanks ) {
             if (!this->board->isObjectOnBoard(tank)) {continue;}
             Point tank_pos = tank->getPosition();
-            if (tank && mine_pos == tank_pos) { // Collision detected: tank on mine
-            tank->setAlive();
+            if (mine_pos == tank_pos) { // Collision detected: tank on mine
+            // tank->setAlive();
             logger.logLineDetailed("Tank " + std::to_string(tank->getId()) + " of player " + std::to_string(board->getTankPlayerId(tank)) +
             " stepped on a mine at (" + std::to_string(tank_pos.getX()) + ", " + std::to_string(tank_pos.getY()) + "). Both are destroyed.");
             tanks_to_remove.push_back(tank);
             mines_to_remove.push_back(mine);
             }
         }
-        break;  // Exit the loop after first mine collision
     }
     // Remove the mines that were stepped on
     for (Mine* mine : mines_to_remove) {
@@ -681,7 +685,7 @@ void GameManager:: consolidateActions(const std::list<std::tuple<TankData*, Acti
     int size_tanks = tanks.size();
     for (const auto& [td, req, is_approved] : actions) {
     logDeadTanks(dead_tanks, i, size_tanks);
-        bool is_last = (j == size_tanks);
+        bool is_last = (i == size_tanks);
         if (is_approved && !this->board->isObjectOnBoard(td->tank)) {
             logger.logActionSummary(shortActionName(req), false, true, is_last);
         }

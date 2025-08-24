@@ -1,12 +1,10 @@
+#include <filesystem>
 #include "Simulator.h"
 #include "MapParser.h"
 #include "ArgsParser.h"
 #include "Loader.h"
 #include "GameManagerRegistrar.h"
 #include "AlgorithmRegistrar.h"
-//#include "../UserCommon/GameBoardSatelliteView.h"
-//#include "GameManager.h"
-
 #include <thread>
 #include <mutex>
 #include <map>
@@ -50,7 +48,30 @@ Simulator::Simulator() {
 
 }
 
+std::string Simulator::satelliteViewToString(const SatelliteView* view, std::size_t width, std::size_t height)
+{
+    assert(view != nullptr);
+
+    const std::size_t nl = (height ? height - 1 : 0);
+    std::string out(width * height + nl, '\0');
+
+    std::size_t i = 0;
+    for (std::size_t y = 0; y < height; ++y) {
+        for (std::size_t x = 0; x < width; ++x) {
+            out[i++] = view->getObjectAt(x, y);
+        }
+        if (y + 1 < height) out[i++] = '\n';
+    }
+    return out;
+}
+
 void Simulator::runComparativeMode(const ParsedArgs& args) {
+
+    if (countFilesWithPrefixAndExtension(args.game_managers_folder, "GameManager", "so") == 0) {
+        cerr << "game manager folder should contain at least one game manager, exiting" << endl;
+        exit(1);
+    }
+
     // Same players/algorithms & same map for all managers
     auto& play_and_algorithm_registrar = AlgorithmRegistrar::getAlgorithmRegistrar();
     auto& game_managers_registrar     = GameManagerRegistrar::getGameManagerRegistrar();
@@ -65,14 +86,16 @@ void Simulator::runComparativeMode(const ParsedArgs& args) {
     auto algorithm2 = play_and_algorithm_registrar.getAlgorithmRegistrar().getAt(1);
 
     // Shared collection for results
-    std::vector<std::pair<std::string, GameResult>> results;
+    std::vector<std::pair<std::string, GameResultEx>> results;
     std::mutex results_mtx;
 
     // Queue of tasks
     ConcurrentQueue<Task> queue;
 
-    // Enqueue: one task per GameManager factory
-    for (auto& gm_factory : game_managers_registrar) {
+    // Enqueue: one task per GameManager factory, with filename
+    int gm_index = 0;
+    for (auto gm_factory = game_managers_registrar.begin(); gm_factory != game_managers_registrar.end(); ++gm_factory, ++gm_index) {
+        const std::string& gm_filename = game_managers_registrar.getFilenameAt(gm_index);
         Task t{
             args.game_map,
             player1_index,
@@ -83,15 +106,24 @@ void Simulator::runComparativeMode(const ParsedArgs& args) {
             algorithm2.getPlayerName(),
             algorithm1.getTankAlgorithmFactory(),
             algorithm2.getTankAlgorithmFactory(),
-            gm_factory,
+            *gm_factory,
             args.verbose,
-            nullptr // we are collecting results, not writing files
+            nullptr, // we are collecting results, not writing files
+            gm_filename // pass the filename as the last argument
         };
 
         // Collect results thread-safely
-        t.on_complete = [&](const Task* task, GameResult&& r) {
+        t.on_complete = [&](const Task* task, GameResult&& gr) {
+            GameResultEx gr_ex;
+
+            gr_ex.winner = gr.winner;
+            gr_ex.reason = gr.reason;
+            gr_ex.rounds = gr.rounds;
+            std::copy(gr.remaining_tanks.begin(), gr.remaining_tanks.end(), std::back_inserter(gr_ex.remaining_tanks));
+            gr_ex.game_map_grid = satelliteViewToString(gr.game_state.get(), map_data.cols, map_data.rows);
+
             std::lock_guard<std::mutex> lk(results_mtx);
-            results.emplace_back(task->game_manager, std::move(r));
+            results.emplace_back(task->game_manager_filename, gr_ex);
         };
 
         queue.push(std::move(t));

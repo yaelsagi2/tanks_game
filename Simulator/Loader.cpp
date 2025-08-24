@@ -8,6 +8,7 @@
 #include <iostream> // For input/output operations
 #include <cstring>
 #include "AlgorithmRegistrar.h"
+#include "GameManagerRegistrar.h"
 
 int Loader::HasSOExtension(const char *filename) {
     // This function checks if a filename has a .so extension.
@@ -38,8 +39,14 @@ int Loader::LoadSharedObjects(const ParsedArgs& args) {
     int file_result = 0;
     if (args.mode == ParsedArgs::Mode::Comparative) {
         int r1 = LoadSharedFile(args.algorithm1);
-        int r2 = LoadSharedFile(args.algorithm2);
-        if (r1 != 0 || r2 != 0) file_result = -1;
+        if (args.algorithm1 == args.algorithm2) {
+            AlgorithmRegistrar::getAlgorithmRegistrar().copyLastEntry();
+
+        } else {
+            int r2 = LoadSharedFile(args.algorithm2);
+            if (r1 != 0 || r2 != 0)
+                file_result = -1;
+        }
     }
     else if (args.mode == ParsedArgs::Mode::Competition) {
         int r = LoadSharedFile(args.game_manager_so);
@@ -64,8 +71,26 @@ std::string Loader::filenameFromPath(const std::string& fullpath)
 int Loader::LoadSharedFile(const std::string& so_file_path) {
     try {
         std::string filename_only = filenameFromPath(so_file_path);
+        // Register Algorithm or GameManager factory with filename
         if (std::equal(filename_only.begin(), filename_only.begin()+9, "Algorithm")) {
             AlgorithmRegistrar::getAlgorithmRegistrar().createAlgorithmFactoryEntry(filename_only);
+        } else if (std::equal(filename_only.begin(), filename_only.begin()+11, "GameManager")) {
+            void *handle = dlopen(so_file_path.c_str(), RTLD_NOW);
+            if (!handle) {
+                std::cerr << "dlopen failed for " << so_file_path << ": " << dlerror() << std::endl;
+                return -1;
+            }
+            // After dlopen, the .so should have registered a factory. Now update the filename for the last one.
+            auto& registrar = GameManagerRegistrar::getGameManagerRegistrar();
+            registrar.setLastFilename(filename_only);
+            return 0;
+        } else {
+            void *handle = dlopen(so_file_path.c_str(), RTLD_NOW);
+            if (!handle) {
+                std::cerr << "dlopen failed for " << so_file_path << ": " << dlerror() << std::endl;
+                return -1;
+            }
+            return 0;
         }
         void *handle = dlopen(so_file_path.c_str(), RTLD_NOW);  // Load the shared object file
         if (!handle) {

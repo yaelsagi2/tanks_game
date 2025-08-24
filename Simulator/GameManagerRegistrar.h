@@ -3,7 +3,8 @@
 #include <memory>
 #include <functional>
 #include "../common/AbstractGameManager.h"
-
+#include <iostream>
+#include <string>
 /**
  * @brief Singleton registrar for storing and accessing GameManager factories.
  * 
@@ -26,10 +27,20 @@ public:
      * @brief Adds a new GameManager factory to the registrar.
      * @param factory A factory function that creates a unique_ptr<AbstractGameManager>.
      */
-    void addGameManagerFactory(std::function<std::unique_ptr<AbstractGameManager>(bool)>&& factory) {
+    void addGameManagerFactory(std::function<std::unique_ptr<AbstractGameManager>(bool)>&& factory, const std::string& filename) {
         managers.emplace_back(factory);
+        filenames.emplace_back(filename);
     }
-
+        // Set the filename for the last registered factory (used by loader after dlopen)
+    void setLastFilename(const std::string& filename) {
+        if (!filenames.empty()) {
+            std::string clean_name = filename;
+            if (clean_name.size() > 3 && clean_name.substr(clean_name.size() - 3) == ".so") {
+                clean_name = clean_name.substr(0, clean_name.size() - 3);
+            }
+            filenames.back() = clean_name;
+        }
+    }
     /**
      * @brief Returns an iterator to the beginning of the factories vector.
      */
@@ -53,6 +64,11 @@ public:
         return managers[index];
     }
 
+    // Get the filename for a given index
+    const std::string& getFilenameAt(int index) const {
+        return filenames[index];
+    }
+
     /**
      * @brief Returns the number of registered factories.
      * @return The number of factories.
@@ -62,7 +78,7 @@ public:
     /**
      * @brief Clears all registered factories.
      */
-    void clear() { managers.clear(); }
+    void clear() { managers.clear(); filenames.clear(); }
 
     /**
      * @brief The singleton instance of the registrar.
@@ -71,6 +87,7 @@ public:
 
 private:
     std::vector<std::function<std::unique_ptr<AbstractGameManager>(bool)>> managers; ///< Registered factories
+    std::vector<std::string> filenames; ///< Filenames for each factory
 };
 
 

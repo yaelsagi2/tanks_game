@@ -198,6 +198,11 @@ public:
         }
     }
 
+    void copyLastEntry() {
+        auto last_entry = algorithms.back();
+        algorithms.push_back(last_entry);
+    }
+
     /**
      * @brief Get iterator to beginning of algorithms list.
      * @return Iterator to beginning.
