@@ -1,0 +1,195 @@
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/input_a.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/input_a.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/input_errors.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Invalid map headers.
+Line 2: expected header 'MaxSteps=...', found 'Extra lines beyond declared Rows ignored.'
+Missing MaxSteps value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/input_errors.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_bad_char.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_bad_char.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_cols_meta.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Invalid map headers.
+Line 5: expected header 'Cols=...', found '1'
+Missing Cols value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_cols_meta.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_max_steps.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Invalid map headers.
+Line 2: expected key 'MaxSteps', found 'NumShells'
+Missing MaxSteps value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_max_steps.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_rows_meta.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Invalid map headers.
+Line 4: expected key 'Rows', found 'Cols'
+Missing Rows value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_missing_rows_meta.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_no_player2.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/invalid_no_player2.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/recorded_game.mxr
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Invalid map headers.
+Line 2: expected header 'MaxSteps=...', found empty line
+Missing MaxSteps value.
+Fatal error: invalid map headers
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/recorded_game.mxr
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_extra_cols.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_extra_cols.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_extra_rows.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_extra_rows.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_2v7.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_2v7.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_3v3_P1_trapped.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_3v3_P1_trapped.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_3v3_P2_trapped.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_3v3_P2_trapped.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_7v2.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_7v2.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_complex.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_complex.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_minefield.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_minefield.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_simple.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_input_simple.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_missing_rows.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_missing_rows.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_mixed_size.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_mixed_size.txt
+
+
+
+==============================
+Running: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_short_rows.txt
+==============================
+dlopen failed for Algorithm/Algorithm_206038929_314620071.so: Algorithm/Algorithm_206038929_314620071.so: cannot open shared object file: No such file or directory
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: Algorithm/Algorithm_206038929_314620071.so vs Algorithm/Algorithm_206480972_206899163.so on maps/valid_short_rows.txt
+
+
+

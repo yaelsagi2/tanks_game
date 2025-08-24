@@ -1,0 +1,10 @@
+GetBattleInfo, GetBattleInfo, GetBattleInfo, GetBattleInfo
+GetBattleInfo, GetBattleInfo, GetBattleInfo, Shoot
+RotateLeft90, GetBattleInfo (killed), GetBattleInfo, GetBattleInfo
+Shoot, killed, GetBattleInfo, MoveForward, 
+GetBattleInfo (killed), killed, GetBattleInfo, GetBattleInfo, 
+killed, killed, GetBattleInfo, RotateRight90, 
+killed, killed, GetBattleInfo, GetBattleInfo, 
+killed, killed, GetBattleInfo, Shoot (ignored), 
+killed, killed, GetBattleInfo, RotateRight90, 
+killed, killed, GetBattleInfo, MoveForward, 

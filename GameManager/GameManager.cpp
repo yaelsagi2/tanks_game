@@ -396,7 +396,7 @@ GameResult GameManager::runGameLoop() {
     // This function runs the main game loop, processing player actions and updating the game state.
     while (!game_over && current_step <= board->getMaxSteps()) {
         std::vector<std::pair<TankData*, ActionRequest>> requests = gatherRequests();
-        auto processed = processRequests(requests);
+         auto processed = processRequests(requests);
         executeRequests(processed);
         if (isGameOver()) {
             game_over = true; // Set game over flag if the game is over

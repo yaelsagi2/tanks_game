@@ -1,0 +1,126 @@
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/input_a.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on input_a.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_extra_cols.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_extra_cols.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_extra_rows.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_extra_rows.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_input_2v7.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_input_2v7.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_input_3v3_P1_trapped.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_input_3v3_P1_trapped.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_input_3v3_P2_trapped.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_input_3v3_P2_trapped.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_input_7v2.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_input_7v2.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_input_complex.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_input_complex.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_input_minefield.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_input_minefield.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_input_simple.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_input_simple.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_missing_rows.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_missing_rows.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_mixed_size.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_mixed_size.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_0000.so on maps/valid_short_rows.txt
+==============================
+dlopen failed for algorithm_folder/Algorithm_0000.so: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by algorithm_folder/Algorithm_0000.so)
+Fatal error: AlgorithmRegistrar::getAt - index out of range
+FAILED: algorithm_folder/Algorithm_0000.so on valid_short_rows.txt
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_206038929_314620071.so on maps/input_a.txt
+==============================
+
+
+
+==============================
+Running: algorithm_folder/Algorithm_206038929_314620071.so on maps/valid_extra_cols.txt
+==============================
