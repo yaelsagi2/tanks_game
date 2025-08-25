@@ -1,0 +1,9 @@
+game_map=maps/invalid_bad_char.txt
+algorithm1=../Algorithm/Algorithm_206480972_206899163
+algorithm2=../Algorithm/Algorithm_206480972_206899163
+
+GameManager_206480972_206899163
+Tie, both players have zero tanks
+2
+   
+###

@@ -1,6 +1,0 @@
-game_maps_folder=maps
-game_manager=GameManager/GameManager_206480972_206899163
-
-Algorithm_206480972_206899167 46
-Algorithm_206480972_206899163 37
-Algorithm_206480972_206899160 34

@@ -15,23 +15,17 @@ struct Task {
     std::string                map_filename;
     int                        player1_index;
     int                        player2_index;
-
-
     // Factories captured at task creation (thread-safe to copy/use)
     PlayerFactory              pf1;
 	std::string 			   player1_name;
     PlayerFactory              pf2;
 	std::string 			   player2_name;
-
     TankAlgorithmFactory       taf1;
     TankAlgorithmFactory       taf2;
     GameManagerFactory         gm_factory;
-
     bool                       verbose = false;
-
     // Optional serialization for output
     std::mutex* output_mutex = nullptr;
-    
     std::string game_manager_filename="";
     std::string player1_algo_name = "";
     std::string player2_algo_name = "";

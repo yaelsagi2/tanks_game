@@ -19,16 +19,16 @@ namespace Algorithm_206480972_206899163 {
           shell_threat_radius(THREAT_RADIUS),
           ask_for_info_interval(INFO_INTERVAL) {}
 
-    int HybridTankAlgorithm::getIndex() {
+    int HybridTankAlgorithm::getIndex() { // Returns the index of the tank
         return tank_index;
     }
 
-    void HybridTankAlgorithm::setDefensive() {
+    void HybridTankAlgorithm::setDefensive() { // Sets the tank to defensive mode
         m_defensive = true;
         m_offensive = false;
     }
 
-    void HybridTankAlgorithm::setOffensive() {
+    void HybridTankAlgorithm::setOffensive() { // Sets the tank to offensive mode
         m_offensive = true;
         m_defensive = false;
     }
@@ -50,8 +50,7 @@ namespace Algorithm_206480972_206899163 {
     void HybridTankAlgorithm::updateStateAfterReq(ActionRequest req)
     {
         bool do_cool_down = true; // Flag to indicate if cooldown should be applied
-        if (!this->battle_info.isObjectOnBoard(battle_info.getMyTank())) // No action if my tank is not set
-        { return; }
+        if (!this->battle_info.isObjectOnBoard(battle_info.getMyTank()))  { return; }
         Tank *my_tank = battle_info.getMyTank();
         int cols = battle_info.getCols();
         int rows = battle_info.getRows();
@@ -71,9 +70,7 @@ namespace Algorithm_206480972_206899163 {
                 }
                 break;
             case ActionRequest::MoveForward:
-                if(my_tank->getBackwardSteps() > 0) {
-                    my_tank->setBackwardSteps(0); // Reset backward steps if moving forward
-                }
+                if(my_tank->getBackwardSteps() > 0) { my_tank->setBackwardSteps(0); } //sets backward steps to 0
                 else {my_tank->moveForward(cols, rows); }
                 break;
             case ActionRequest::RotateLeft45:
@@ -91,17 +88,12 @@ namespace Algorithm_206480972_206899163 {
             case ActionRequest::DoNothing:
                 break;
             case ActionRequest::GetBattleInfo:
-                if(my_tank->getBackwardSteps() > 0) {
-                    my_tank->setBackwardSteps(0); // Reset backward steps if moving forward
-                }
+                if(my_tank->getBackwardSteps() > 0) { my_tank->setBackwardSteps(0); }
                 break;
             default:
                 break;
         }
-        // Update the current step after processing the request
-        if (do_cool_down) {
-            battle_info.getMyTank()->cooldownModify(); // Apply cooldown after action
-        }
+        if (do_cool_down) { battle_info.getMyTank()->cooldownModify();}  // Apply cooldown after action
         current_step++;
     }
 
@@ -164,14 +156,12 @@ namespace Algorithm_206480972_206899163 {
             if (diff == 7 || diff == -1)
                 return ActionRequest::RotateLeft45;
         }
-
         // if facing the right direction - move
         std::pair<int, int> offset = directionOffset(tank->getCanonDir());
         int cols = battle_info.getCols();
         int rows = battle_info.getRows();
         Point forward_pos((pos.getX() + offset.first + cols) % cols,
                           (pos.getY() + offset.second + rows) % rows);
-
         // Calculate the position we would reach if we move in escape direction
         std::pair<int, int> escape_offset = directionOffset(escape_dir);
         Point escape_pos((pos.getX() + escape_offset.first + cols) % cols,
@@ -196,79 +186,52 @@ namespace Algorithm_206480972_206899163 {
         int cols = battle_info.getCols();
         int rows = battle_info.getRows();
         const auto &shells = battle_info.getShells();
-        for (int i = 0; i < 8; ++i)
-        {
+        for (int i = 0; i < 8; ++i) {
             Direction dir = static_cast<Direction>(i);
             std::pair<int, int> offset = directionOffset(dir);
-            Point new_pos((pos.getX() + offset.first + cols) % cols,
-                          (pos.getY() + offset.second + rows) % rows);
-
-            if (isPositionValid(new_pos) && isPositionSafe(new_pos))
-            {
-                possible_directions.push_back(dir);
-            }
+            Point new_pos((pos.getX() + offset.first + cols) % cols, (pos.getY() + offset.second + rows) % rows);
+            if (isPositionValid(new_pos) && isPositionSafe(new_pos)) { possible_directions.push_back(dir); }
         }
-
-        if (possible_directions.empty())
-        {
-            // No safe directions, choose the one with the least nearby shells
+        if (possible_directions.empty()) {             // No safe directions, choose the one with the least nearby shells
             Direction safest_dir = tank->getCanonDir();
             int min_shell_count = shells.size();
-
             for (int i = 0; i < 8; ++i)
             {
                 Direction dir = static_cast<Direction>(i);
                 std::pair<int, int> offset = directionOffset(dir);
-                Point new_pos((pos.getX() + offset.first + cols) % cols,
-                              (pos.getY() + offset.second + rows) % rows);
-
+                Point new_pos((pos.getX() + offset.first + cols) % cols, (pos.getY() + offset.second + rows) % rows);
                 if (!isPositionValid(new_pos))
                     continue;
-
                 int shell_count = 0;
-                for (const auto &shell : shells)
-                {
+                for (const auto &shell : shells) {
                     if (shell && euclideanDistance(new_pos, shell->getPosition()) <= 2) // shell moves 2 step at time
                         shell_count++;
                 }
-
-                if (shell_count < min_shell_count)
-                {
+                if (shell_count < min_shell_count) {
                     min_shell_count = shell_count;
                     safest_dir = dir;
                 }
             }
-
             return safest_dir;
         }
-
         // Choose the direction that maximizes distance from shells
         Direction best_dir = possible_directions[0];
         double max_min_distance = -1.0;
-
-        for (Direction dir : possible_directions)
-        {
+        for (Direction dir : possible_directions){
             std::pair<int, int> offset = directionOffset(dir);
-            Point new_pos((pos.getX() + offset.first + cols) % cols,
-                          (pos.getY() + offset.second + rows) % rows);
-
+            Point new_pos((pos.getX() + offset.first + cols) % cols, (pos.getY() + offset.second + rows) % rows);
             double min_distance = cols + rows;
-            for (const auto &shell_ptr : shells)
-            {
-                if (shell_ptr)
-                {
+            for (const auto &shell_ptr : shells) {
+                if (shell_ptr) {
                     double dist = euclideanDistance(new_pos, shell_ptr->getPosition());
                     min_distance = std::min(min_distance, dist);
                 }
             }
-
-            if (min_distance > max_min_distance)
-            {
+            if (min_distance > max_min_distance) {
                 max_min_distance = min_distance;
                 best_dir = dir;
             }
         }
-
         return best_dir;
     }
 
@@ -364,52 +327,36 @@ namespace Algorithm_206480972_206899163 {
         //   - If my_tank is facing the correct direction toward the next step in the path, it will attempt to move forward.
         //   - Otherwise, it will rotate toward the correct direction.
         //   - If there are no more planned steps remaining, my_tank will choose a different direction to face.
-        if (isInShootingRange(my_tank) && my_tank->canShoot())
-        {
-            return ActionRequest::Shoot;
-        }
+        if (isInShootingRange(my_tank) && my_tank->canShoot()) { return ActionRequest::Shoot; }
         // each recalculate_interval steps calculating new way
         std::vector<Tank *> enemy_tanks = getPlayerTanks(player_index == 1 ? 2 : 1); // Get the enemy tanks
         Tank *closest_enemy_tank = findClosestTank(my_tank->getPosition(), enemy_tanks);
         if (!this->battle_info.isObjectOnBoard(closest_enemy_tank)) { return ActionRequest::DoNothing; }
-        if (current_step % recalculate_interval == 1)
-        {
-            if (closest_enemy_tank)
-            {
-                findPathStepsToEnemy(my_tank, closest_enemy_tank);
-            }
+        if (current_step % recalculate_interval == 1) {
+            if (closest_enemy_tank) { findPathStepsToEnemy(my_tank, closest_enemy_tank); }
         }
-
         // we still have a path that we already calculated
-        if (!my_tank->getFutureSteps().empty())
-        {
+        if (!my_tank->getFutureSteps().empty()) {
             Point pos = my_tank->getPosition();
             std::vector<Point> steps = my_tank->getFutureSteps();
             Point next = steps.front();
             my_tank->setFutureSteps(steps);
             int cols = battle_info.getCols();
             int rows = battle_info.getRows();
-            if (next != pos)
-            {
+            if (next != pos) {
                 std::pair<int, int> offset = directionOffset(my_tank->getCanonDir());
-                Point forward_pos((pos.getX() + offset.first + cols) % cols,
-                                  (pos.getY() + offset.second + rows) % rows);
-                if (forward_pos == next)
-                {
+                Point forward_pos((pos.getX() + offset.first + cols) % cols, (pos.getY() + offset.second + rows) % rows);
+                if (forward_pos == next) {
                     steps.erase(steps.begin());
                     my_tank->setFutureSteps(steps);
                     return ActionRequest::MoveForward;
                 }
-                else
-                {
-                    // if next step is not needed direction
+                else { // if next step is not needed direction
                     Direction needed_dir = directionTo(pos, next);
-                    if (my_tank->getCanonDir() != needed_dir)
-                    {
+                    if (my_tank->getCanonDir() != needed_dir) {
                         int current_dir = static_cast<int>(my_tank->getCanonDir());
                         int target_dir = static_cast<int>(needed_dir);
-                        int diff = (target_dir - current_dir + 8) % 8;
-                        // choose right direction
+                        int diff = (target_dir - current_dir + 8) % 8; // choose right direction
                         if (diff == 1 || diff == -7)
                             return ActionRequest::RotateRight45;
                         if (diff == 2 || diff == 3 || diff == 4 || diff == -4 || diff == -5 || diff == -6)
@@ -425,8 +372,7 @@ namespace Algorithm_206480972_206899163 {
                 }
             }
         }
-        // we don't have more steps
-        Direction best_dir = calculateBestDirection(my_tank, closest_enemy_tank);
+        Direction best_dir = calculateBestDirection(my_tank, closest_enemy_tank);         // we don't have more steps
         if (my_tank->getCanonDir() != best_dir)
         {
             int current_dir = static_cast<int>(my_tank->getCanonDir());
@@ -456,30 +402,23 @@ namespace Algorithm_206480972_206899163 {
         //      - Take up to recalculate_interval future steps ahead (or fewer if the path is shorter).
         //      - Set these steps in tank1 using `setFutureSteps`.
         //    - If no path to tank2 is found, set an empty future steps list for tank1.
-
         Point start = tank1->getPosition();
         Point target = tank2->getPosition();
-
         std::queue<Point> queue;
         std::vector<Point> visited;
         std::vector<std::pair<Point, Point>> parent; // pair of (child, parent)
-        std::vector<Point> path;
-        // adding first point
+        std::vector<Point> path; 
         queue.push(start);
         visited.push_back(start);
         int cols = battle_info.getCols();
         int rows = battle_info.getRows();
-        while (!queue.empty())
-        { // BFS
+        while (!queue.empty()) { // BFS
             Point current = queue.front();
             queue.pop();
-            if (current == target)
-            {
-                // Path found, reconstruct the path
+            if (current == target) {                 // Path found, reconstruct the path
                 std::vector<Point> reverse_path;
                 Point next = current;
-                while (next != start)
-                {
+                while (next != start) {
                     reverse_path.push_back(next);
                     next = findParent(parent, next);
                 }
@@ -489,18 +428,11 @@ namespace Algorithm_206480972_206899163 {
                 tank1->setFutureSteps(path);
                 return;
             }
-
-            // Check all 8 directions including backward movement
-            for (int dx = -1; dx <= 1; ++dx)
-            {
-                for (int dy = -1; dy <= 1; ++dy)
-                {
-                    if (dx == 0 && dy == 0)
-                        continue; // Skip current position
-                    Point neighbor((current.getX() + dx + cols) % cols,
-                                   (current.getY() + dy + rows) % rows);
-                    if (!isPointInVector(visited, neighbor) && isPositionValid(neighbor))
-                    {
+            for (int dx = -1; dx <= 1; ++dx) {             // Check all 8 directions including backward movement
+                for (int dy = -1; dy <= 1; ++dy) {
+                    if (dx == 0 && dy == 0) continue; // Skip current position
+                    Point neighbor((current.getX() + dx + cols) % cols, (current.getY() + dy + rows) % rows);
+                    if (!isPointInVector(visited, neighbor) && isPositionValid(neighbor)) {
                         visited.push_back(neighbor);
                         parent.push_back({neighbor, current});
                         queue.push(neighbor);
@@ -580,7 +512,6 @@ namespace Algorithm_206480972_206899163 {
         // Point tank2_pos = tank2->getPosition();
         Direction dir = tank->getCanonDir();
         std::pair<int, int> offset = directionOffset(dir);
-
         std::vector<Tank *> enemy_tanks = getPlayerTanks(player_index == 1 ? 2 : 1); // Get enemy tanks
         std::vector<Tank *> ally_tanks = getPlayerTanks(player_index == 2 ? 2 : 1);  // Get ally tanks
         // Check if enemy is in line of sight
@@ -600,17 +531,10 @@ namespace Algorithm_206480972_206899163 {
                     return false; // Ally is blocking the shot
                 }
             }
-
-            if (isThereWall(current))
-            {
-                return false;
-            }
+            if (isThereWall(current)) { return false; }
             for (const auto &enemy_t : enemy_tanks)
             {
-                if (enemy_t->getPosition() == current)
-                {
-                    return true; // enemy is in shooting range
-                }
+                if (enemy_t->getPosition() == current) { return true; } //enemy is in shooting range
             }
         }
         return false; // enemy is not in shooting range

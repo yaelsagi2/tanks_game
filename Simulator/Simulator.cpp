@@ -44,9 +44,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-Simulator::Simulator() {
-
-}
+Simulator::Simulator() {}
 
 std::string Simulator::satelliteViewToString(const SatelliteView* view, std::size_t width, std::size_t height)
 {
@@ -54,7 +52,6 @@ std::string Simulator::satelliteViewToString(const SatelliteView* view, std::siz
 
     const std::size_t nl = (height ? height - 1 : 0);
     std::string out(width * height + nl, '\0');
-
     std::size_t i = 0;
     for (std::size_t y = 0; y < height; ++y) {
         for (std::size_t x = 0; x < width; ++x) {
@@ -66,80 +63,55 @@ std::string Simulator::satelliteViewToString(const SatelliteView* view, std::siz
 }
 
 void Simulator::runComparativeMode(const ParsedArgs& args) {
-// This function runs the simulator in comparative mode
+// This function runs the simulator in comparative mode -Same players/algorithms & same map for all managers
     if (countFilesWithPrefixAndExtension(args.game_managers_folder, "GameManager", "so") == 0) {
         cerr << "game manager folder should contain at least one game manager, exiting" << endl;
         exit(1);
     }
-    // Same players/algorithms & same map for all managers
     auto& play_and_algorithm_registrar = AlgorithmRegistrar::getAlgorithmRegistrar();
     auto& game_managers_registrar     = GameManagerRegistrar::getGameManagerRegistrar();
     std::vector<std::string> errors;
     auto map_data = readMapFile(args.game_map, errors); // tasks will read again by filename
-    // Choose the two algorithms (mirrors your original code)
     const int player1_index = 1;
     const int player2_index = 2;
     auto algorithm1 = play_and_algorithm_registrar.getAlgorithmRegistrar().getAt(0);
     auto algorithm2 = play_and_algorithm_registrar.getAlgorithmRegistrar().getAt(1);
-    // Shared collection for results
-    std::vector<std::pair<std::string, GameResultEx>> results;
+    std::vector<std::pair<std::string, GameResultEx>> results;     // Shared collection for results
     std::mutex results_mtx;
-    // Queue of tasks
-    ConcurrentQueue<Task> queue;
-    // Enqueue: one task per GameManager factory, with filename
-    int gm_index = 0;
+    ConcurrentQueue<Task> queue;    // Queue of tasks
+    int gm_index = 0;    // Enqueue: one task per GameManager factory, with filename
     for (auto gm_factory = game_managers_registrar.begin(); gm_factory != game_managers_registrar.end(); ++gm_factory, ++gm_index) {
         const std::string& gm_filename = game_managers_registrar.getFilenameAt(gm_index);
-        Task t{args.game_map, player1_index, player2_index,
-                algorithm1.getPlayerFactory(), algorithm1.getPlayerName(),
-                algorithm2.getPlayerFactory(), algorithm2.getPlayerName(),
-                algorithm1.getTankAlgorithmFactory(), algorithm2.getTankAlgorithmFactory(),
-                *gm_factory,
-                args.verbose,
-                nullptr, // we are collecting results, not writing files
-                gm_filename // pass the filename as the last argument
-        };
-
-        // Collect results thread-safely
-        t.on_complete = [&](const Task* task, GameResult&& gr) {
-            GameResultEx gr_ex;
-
-            gr_ex.winner = gr.winner;
-            gr_ex.reason = gr.reason;
-            gr_ex.rounds = gr.rounds;
+        Task t{args.game_map, player1_index, player2_index, algorithm1.getPlayerFactory(), algorithm1.getPlayerName(),
+                algorithm2.getPlayerFactory(), algorithm2.getPlayerName(), algorithm1.getTankAlgorithmFactory(), algorithm2.getTankAlgorithmFactory(),
+                *gm_factory, args.verbose, nullptr,gm_filename // pass the filename as the last argument
+        };         // Collect results thread-safely
+        t.on_complete = [&](const Task* task, GameResult&& gr) { GameResultEx gr_ex; gr_ex.winner = gr.winner;
+            gr_ex.reason = gr.reason; gr_ex.rounds = gr.rounds;
             std::copy(gr.remaining_tanks.begin(), gr.remaining_tanks.end(), std::back_inserter(gr_ex.remaining_tanks));
             gr_ex.game_map_grid = satelliteViewToString(gr.game_state.get(), map_data.cols, map_data.rows);
-
             std::lock_guard<std::mutex> lk(results_mtx);
             results.emplace_back(task->game_manager_filename, gr_ex);
         };
-
         queue.push(std::move(t));
     }
-
-    // No more tasks will be added
-    queue.close();
-    // Worker pool
-    int num_threads = args.num_threads;
+    queue.close();    // No more tasks will be added
+    int num_threads = args.num_threads;     // Worker pool
     if (queue.size() <= num_threads) { num_threads = queue.size(); }
     std::vector<std::thread> workers;
     workers.reserve(num_threads);
     for (int i = 0; i < num_threads; ++i) {
         workers.emplace_back([&queue] {
             Task task;
-            while (queue.pop(task)) {
-                task.run();
-            }
+            while (queue.pop(task)) { task.run(); }
         });
     }
     for (auto& th : workers) th.join();
-
-    GameResultWriter::writeComparativeResults( args.game_map,args.game_managers_folder, args.algorithm1, args.algorithm2,
-        results, map_data.rows, map_data.cols);
+    GameResultWriter::writeComparativeResults( args.game_map,args.game_managers_folder, args.algorithm1, args.algorithm2, results, map_data.rows, map_data.cols);
 }
 
-std::vector<std::pair<std::string, int>>
-Simulator::sortAndConvertMap(const std::map<std::string, int>& winners_map) {
+std::vector<std::pair<std::string, int>> Simulator::sortAndConvertMap(const std::map<std::string, int>& winners_map) {
+    // This function sorts and converts a map to a vector of pairs
     std::vector<std::pair<std::string, int>> v;
     v.reserve(winners_map.size());
     for (const auto& kv : winners_map) v.emplace_back(kv.first, kv.second);
@@ -153,6 +125,7 @@ Simulator::sortAndConvertMap(const std::map<std::string, int>& winners_map) {
 }
 
 std::vector<std::pair<int, int>> Simulator::pairsForMap(int number_of_algorithms, int number_of_maps) {
+    // This function generates pairs of algorithm indices for a given map
     int d = 1 + (int)(number_of_maps % (number_of_algorithms - 1));
     std::set<std::pair<int, int>> uniq;
     for (int i = 0; i < number_of_algorithms; ++i) {
@@ -165,64 +138,35 @@ std::vector<std::pair<int, int>> Simulator::pairsForMap(int number_of_algorithms
 }
 
 void Simulator::runCompetitionMode(const ParsedArgs& args) {
+    // This function runs the competition mode
     if (countFilesWithPrefixAndExtension(args.game_maps_folder) == 0) {
         cerr << "map folder is empty, exiting" << endl;
         exit(1);
     }
-
-    if (countFilesWithPrefixAndExtension(args.algorithms_folder, "Algorithm", "so") == 0) {
+    if (countFilesWithPrefixAndExtension(args.algorithms_folder, "Algorithm", "so") < 2) {
         cerr << "algorithm folder should contain at least two shared libraries, exiting" << endl;
         exit(1);
     }
-
-    // we expect to have exactly 2 players/algorithms
-    auto& play_and_algorithm_registrar = AlgorithmRegistrar::getAlgorithmRegistrar();
-    // we expect to have exactly one type of game manager (we'll create many instances)
-    auto& game_managers_registrar = GameManagerRegistrar::getGameManagerRegistrar();
+    auto& play_and_algorithm_registrar = AlgorithmRegistrar::getAlgorithmRegistrar();     // we expect to have exactly 2 players/algorithms
+    auto& game_managers_registrar = GameManagerRegistrar::getGameManagerRegistrar();    // we expect to have exactly one type of game manager (we'll create many instances)
     std::vector<std::string> map_names = getAllMapNames(args.game_maps_folder);
-
-    // calculate the matchups
-    std::map<int, std::vector<std::pair<int, int>>> matchups;
+    std::map<int, std::vector<std::pair<int, int>>> matchups;     // calculate the matchups
     for (size_t k = 0; k < map_names.size(); ++k) {
         matchups[(int)k] = pairsForMap((int)play_and_algorithm_registrar.count(), (int)k);
     }
-
-    // We'll capture the manager factory (create one GM per task)
-    GameManagerFactory gm_factory = game_managers_registrar.getAt(0);
-
-    // Queue and output mutex
-    ConcurrentQueue<Task> queue;
+    GameManagerFactory gm_factory = game_managers_registrar.getAt(0);     // We'll capture the manager factory (create one GM per task)
+    ConcurrentQueue<Task> queue;     // Queue and output mutex
     std::mutex output_mutex;
-
     std::map<std::string, int> player_scores;
-
-    // Fill the queue with Tasks (one per (map, pair))
-    for (auto& [map_index, pairs] : matchups) {
+    for (auto& [map_index, pairs] : matchups) {     // Fill the queue with Tasks (one per (map, pair))
         const std::string& map_filename = map_names[map_index];
         for (auto [player1_index, player2_index] : pairs) {
             auto algo1 = play_and_algorithm_registrar.getAt(player1_index);
             auto algo2 = play_and_algorithm_registrar.getAt(player2_index);
-
-            Task t{
-                map_filename,
-                player1_index,
-                player2_index,
-                algo1.getPlayerFactory(),
-                algo1.getPlayerName(),
-                algo2.getPlayerFactory(),
-                algo2.getPlayerName(),
-                algo1.getTankAlgorithmFactory(),
-                algo2.getTankAlgorithmFactory(),
-                gm_factory,
-                args.verbose,
-                &output_mutex,
-                "",
-                algo1.getPlayerName(),
-                algo2.getPlayerName()
-            };
-
-            t.on_complete = [&](const Task* task, GameResult&& game_result) {
-                // guard the map from multithread access
+            Task t{ map_filename, player1_index, player2_index, algo1.getPlayerFactory(), algo1.getPlayerName(), algo2.getPlayerFactory(),
+                algo2.getPlayerName(), algo1.getTankAlgorithmFactory(), algo2.getTankAlgorithmFactory(), gm_factory, args.verbose, &output_mutex, "",
+                algo1.getPlayerName(),algo2.getPlayerName()}; 
+            t.on_complete = [&](const Task* task, GameResult&& game_result) {  // guard the map from multithread access
                 switch (game_result.winner) {
                     case 1:
                         player_scores[task->player1_algo_name] += 3;
@@ -241,10 +185,7 @@ void Simulator::runCompetitionMode(const ParsedArgs& args) {
             queue.push(std::move(t));
         }
     }
-
-    // Close the queue so workers stop when exhausted
-    queue.close();
-
+    queue.close();    // Close the queue so workers stop when exhausted
     int num_threads = args.num_threads;
     if (queue.size() <= num_threads) { num_threads = queue.size(); }
     std::vector<std::thread> workers;
@@ -252,21 +193,16 @@ void Simulator::runCompetitionMode(const ParsedArgs& args) {
     for (int i = 0; i < num_threads; ++i) {
         workers.emplace_back([&queue] {
             Task task;
-            while (queue.pop(task)) {
-                task.run();
-            }
+            while (queue.pop(task)) { task.run(); }
         });
     }
-
-    // Join
-    for (auto& th : workers) th.join();
+    for (auto& th : workers) th.join();     // Join
     auto winners_vector = sortAndConvertMap(player_scores);
-    GameResultWriter::writeCompetitiveResults(args.game_maps_folder, args.algorithms_folder,
-                                              args.game_manager_so,
-                                              winners_vector);
+    GameResultWriter::writeCompetitiveResults(args.game_maps_folder, args.algorithms_folder, args.game_manager_so, winners_vector);
 }
 
 std::vector<std::string> Simulator::getAllMapNames(const std::string& folder_path) {
+    //This function retrieves all map names from the specified folder.
     std::vector<std::string> map_names;
     try {
         for (const auto& entry : std::filesystem::directory_iterator(folder_path)) {
@@ -282,11 +218,10 @@ std::vector<std::string> Simulator::getAllMapNames(const std::string& folder_pat
     return map_names;
 }
 
-std::size_t Simulator::countFilesWithPrefixAndExtension(const std::string& dir, const std::string& prefix,
-                                                        const std::string& ext)
+std::size_t Simulator::countFilesWithPrefixAndExtension(const std::string& dir, const std::string& prefix, const std::string& ext)
 {
+    // Count files with a specific prefix and extension in a directory.
     namespace fs = std::filesystem;
-
     const bool all_files = ext.empty();
     std::string want_ext;
     if (!all_files) {
@@ -296,42 +231,33 @@ std::size_t Simulator::countFilesWithPrefixAndExtension(const std::string& dir, 
             want_ext = "." + ext;
         }
     }
-
     std::error_code ec;
     fs::directory_iterator it(dir, ec), end;
     if (ec) {
         throw std::system_error(ec, "Failed to open directory: " + dir);
     }
-
     std::size_t count = 0;
     for (; it != end; it.increment(ec)) {
         if (ec) {
             throw std::system_error(ec, "Error iterating directory: " + dir);
         }
-
         const fs::directory_entry& e = *it;
         std::error_code fec;
         if (!e.is_regular_file(fec)) {
             continue;
         }
-
         if (all_files) {
             // No extension filter -> count every regular file (ignore prefix).
             ++count;
             continue;
         }
-
         const std::string name = e.path().filename().string();
         if (!prefix.empty()) {
-            if (!name.starts_with(prefix)) {
-                continue;
-            }
+            if (!name.starts_with(prefix)) { continue; }
         }
-
-        if (e.path().extension().string() == want_ext) {
-            ++count;
-        }
+        if (e.path().extension().string() == want_ext) { ++count; }
     }
     return count;
 }
+
 

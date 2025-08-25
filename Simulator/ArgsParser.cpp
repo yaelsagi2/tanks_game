@@ -76,12 +76,16 @@ void parseArgsValues(int argc, char* argv[], ParsedArgs& args, std::vector<std::
             merged_args.push_back(key + "=" + value);
         } else { merged_args.push_back(arg);}
     }
+    // Only check argument count for comparative/competition
     if (merged_args.size() < 4) { unsupported.push_back("Not enough arguments (got " + std::to_string(merged_args.size()) + ")");}
     if (merged_args.size() > 8) { unsupported.push_back("Too many arguments (got " + std::to_string(merged_args.size()) + ")");}
     for (const std::string& arg : merged_args) {
-        if (arg == "-verbose") { args.verbose = true;
-        } else if (arg == "-comparative") { args.mode = ParsedArgs::Mode::Comparative;
-        } else if (arg == "-competition") { args.mode = ParsedArgs::Mode::Competition;
+        if (arg == "-verbose") {
+            args.verbose = true;
+        } else if (arg == "-comparative") {
+            args.mode = ParsedArgs::Mode::Comparative;
+        } else if (arg == "-competition") {
+            args.mode = ParsedArgs::Mode::Competition;
         } else {
             try {
                 auto [key, value] = splitKeyValue(arg);

@@ -1,0 +1,19 @@
+game_map=maps/valid_input_complex.txt
+algorithm1=../Algorithm/Algorithm_206480972_206899163
+algorithm2=../Algorithm/Algorithm_206480972_206899163
+
+GameManager_206480972_206899163
+Tie, reached max steps=8000, player 1 has 2 tanks, player 2 has 2 tanks
+8000
+############
+#1 2#  @   #
+# ## # ##2##
+#    #     #
+## ####### #
+#  @   #   #
+# ## #   # #
+#   # ###  #
+#  @ # 1   #
+# ### ##### 
+#     @     
+############

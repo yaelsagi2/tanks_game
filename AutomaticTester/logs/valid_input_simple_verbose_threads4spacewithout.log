@@ -1,0 +1,12 @@
+# Test: verbose_threads4spacewithout
+# Map: valid_input_simple
+# Command: ../Simulator/simulator_206480972_206899163 -comparative algorithm1=../Algorithm/Algorithm_206480972_206899163.so algorithm2=../Algorithm/Algorithm_206480972_206899163.so game_managers_folder=../GameManager game_map=maps/valid_input_simple.txt -verbose num_threads 4
+Usage:
+  Comparative mode:
+    -comparative game_map=<file> game_managers_folder=<folder> algorithm1=<file> algorithm2=<file> [num_threads=<n>] [-verbose]
+  Competition mode:
+    -competition game_maps_folder=<folder> game_manager=<file> algorithms_folder=<folder> [num_threads=<n>] [-verbose]
+
+Unsupported arguments:
+  - num_threads (Missing '=' in argument: num_threads)
+  - 4 (Missing '=' in argument: 4)

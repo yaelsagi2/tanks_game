@@ -1,15 +1,233 @@
 Bonus Request Document:
-//TODO: continue it 
 We would like to request a bonus for the following contributions we made to the project:
 
-Command Line Enhancements
-We improved the command line functionality by adding support for handling spaces in the arguments. 
-This required careful validation and testing to ensure a smooth and reliable user experience.
+1.Command Line Enhancements:
+We improved the command line functionality by adding support for handling spaces in the arguments afte =.
+for example:
+-comparative algorithm1= <algo1> algorithm2= <algo2> game_managers_folder= <gm_folder> game_map= <maps/dir>.txt num_threads= <num> 
+This required careful validation and testing to ensure a smooth and reliable user experience. Out autumatic test which will be explained
+below would check that.
 
-Game Visualization
-We extended the project by adding a visualization feature for the game. 
-This provided a more engaging and intuitive way to observe the gameplay and significantly enhanced the usability and presentation of the project.
+2.Game Visualization
+We extended the project with a lightweight replay system built around a MatrixRecorder that’s integrated into the GameManager.
+What it records: After each step—once all tanks have executed their actions and the board has been updated (moves, shots, collisions, destructions)—
+MatrixRecorder snapshots the full board matrix and appends it to an output file. A small header (rows/cols and legend) is written once; subsequent frames are stored as dense ASCII matrices.
 
-Detailed Logging System
-We implemented a comprehensive logging mechanism that writes detailed information to a file named detailed. 
+How it plays back: At the end of the match, the recorder can play the frames sequentially to the terminal, rendering them in place (using ANSI cursor control so the screen doesn’t scroll) for a smooth, step-by-step animation of the game.
+Why it helps: This gives an intuitive, visual trace of the entire match—great for demos and for debugging spatial/temporal issues that are hard to spot in logs.
+Per-run artifact: Every game run produces a recording file named:
+recording_game_<algo1>_vs_<algo2>.mxr
+Playback is off by default: In GameManager.cpp, lines 42,54,55,60 and 61 contain commented calls (clearly marked). These lines trigger the end-of-game playback.
+We left them commented out because playback slows down automated testing.
+How to enable playback manually (for demos):
+Open GameManager/GameManager.cpp and uncomment these lines lines 42,54,55,60 and 61
+Rebuild: make clean 
+make
+
+optinal command lines:
+# Simple map, with verbose (also writes detailed_output_<...>.txt)
+./Simulator/simulator_206480972_206899163 -comparative \
+  algorithm1=Algorithm/Algorithm_206480972_206899163.so \
+  algorithm2=Algorithm/Algorithm_206480972_206899163.so \
+  game_managers_folder=GameManager \
+  game_map=AutomaticTester/maps/valid_input_simple.txt -verbose
+
+# Larger map, default verbosity
+./Simulator/simulator_206480972_206899163 -comparative \
+  algorithm1=Algorithm/Algorithm_206480972_206899163.so \
+  algorithm2=Algorithm/Algorithm_206480972_206899163.so \
+  game_managers_folder=GameManager \
+  game_map=AutomaticTester/maps/valid_input_7v2.txt
+
+3.Detailed Logging System
+We implemented a comprehensive logging mechanism that writes detailed information to a dedicated file. When -verbose is provided, the detailed logger is enabled automatically, 
+and the file is written with the pattern: detailed_output_<gamemap>_<algo1>_vs_<algo2>_<timestamp>.txt
 This feature makes it easier to debug, analyze, and track the game’s execution flow, providing greater transparency and control.
+
+AutomaticTester: ⚠️ Note: By assignment requirement, we did not include any .so binaries inside the submission folders. To actually run the test, please compile and place by the following instructions.
+4.Comparative-Mode Auto-Tester (FullAutoComparativeTester.sh)
+We built a fully-automated test harness for the simulator’s -comparative mode. It runs our algorithm against itself across all map files in AutomaticTester/maps, exercises multiple CLI configurations (including tricky spacing cases), and writes per-scenario logs for quick inspection and grading.
+Why this is useful?
+Determinism & stability: Running the same algorithm on both sides ensures the game logic, threading, and logging are stable and do not crash under different flags.
+CLI robustness: Verifies our argument parser with/without -verbose, with several num_threads values, and with spaces after = or even missing = to confirm graceful handling.
+Error handling: Covers missing/invalid parameters, empty map folders, and non-existent files—ensuring clear, user-facing error messages rather than crashes.
+
+How to run:
+cd AutomaticTester
+chmod +x FullAutoComparativeTester.sh
+./FullAutoComparativeTester.sh
+
+Assumptions / paths (edit at top of the script if needed):
+SIMULATOR="../Simulator/simulator_206480972_206899163"
+ALG1="../Algorithm/Algorithm_206480972_206899163.so"
+ALG2="../Algorithm/Algorithm_206480972_206899163.so" # same algorithm vs itself
+GMS_FOLDER="../GameManager"
+MAPS_DIR="maps"
+
+Logs are written to AutomaticTester/logs/ (auto-created).
+
+What it does
+
+Functional runs for every *.txt map in maps/ with these modes:
+default (no extra flags)
+-verbose
+Threading variations: num_threads=2, num_threads=4, num_threads=8
+With spaces around =: num_threads= 2, etc.
+With extra spaces: -verbose num_threads= 2, etc.
+With missing = (e.g., num_threads 2) to validate parser behavior.
+Runtime guard: for valid_input_complex, only threads4eq is executed among the threaded modes to keep runtime reasonable (other non-thread modes still run).
+
+Negative / edge-case runs (each to its own log file):
+Missing game_map
+Missing algorithm1
+Missing algorithm2
+Missing game_managers_folder
+Map folder exists but empty
+Non-existent map file (no_map.txt)
+A dedicated check that passes an argument with spaces around = (e.g., "num_threads = 4"); this validates tolerant parsing and/or proper error reporting.
+
+Per-scenario logging
+For each run the script writes:
+The test name, map name, and the exact command used (as commented header).
+
+Full stdout/stderr of the simulator.
+Example: logs/valid_input_7v2_threads4eq.log
+
+Deterministic final outcome: Since both sides use the same algorithm, the final line should be consistent across modes (e.g., identical winner/tie).
+(Threaded runs should not change the end result.)
+
+Clear error messages for invalid invocations (missing args, empty folder, non-existent file) instead of undefined behavior.
+
+5.FullAutoGameManagerTester.sh — GameManager folder & map edge-case tester
+
+What this tester does:
+This script validates -comparative runs under different GameManager folder and maps scenarios, focusing on loader errors and argument handling. It creates targeted logs so you can quickly confirm proper error messages instead of crashes.
+Place your GameManager .so files in a folder under AutomaticTester/.
+Recommended default: AutomaticTester/Game_Manager_folder/ (this name matches the script).
+If your folder has a different name, edit the GM_FOLDER variable near the top of the script: GM_FOLDER="Your_GameManager_Folder_Name"
+
+Paths you may customize at the top:
+SIMULATOR="../Simulator/simulator_206480972_206899163"
+ALG1="../Algorithm/Algorithm_206480972_206899163.so"
+ALG2="../Algorithm/Algorithm_206480972_206899163.so"  # same algo vs itself
+MAPS_DIR="maps"         # folder with *.txt maps
+LOG_DIR="logs_gm"       # output logs folder
+GM_FOLDER="Game_Manager_folder"  # folder INSIDE AutomaticTester with your .so files
+
+How to run
+cd AutomaticTester
+chmod +x FullAutoGameManagerTester.sh
+./FullAutoGameManagerTester.sh
+
+Logs are written under AutomaticTester/logs_gm/.
+
+What it tests (sections):
+0. Empty Game_Manager_folder (no .so files)
+Creates empty_gm_folder/ and runs the simulator against each map.
+Expected: a clear loader/validation error (not a crash) when no GameManager .so is available.
+
+Logs: logs_gm/<map>_gm_emptyfolder.log
+
+0b. Empty maps folder
+Creates empty_maps_folder/ and runs with game_map=empty_maps_folder/.
+Expected: proper error about missing maps (directory exists but contains no *.txt).
+Log: logs_gm/gm_Game_Manager_folder_maps_empty.log (or your GM_FOLDER name)
+
+Main pass with your GameManager folder
+Iterates all *.txt in maps/, using your GM_FOLDER.
+Ensures normal comparative runs work with your .so loader.
+One log per map: logs_gm/<map>_gm_<GM_FOLDER>.log
+
+Empty GameManager folder value
+Runs with game_managers_folder= (empty value).
+Expected: explicit argument/validation error (not a crash).
+Logs: logs_gm/<map>_gm_empty.log
+
+Empty map value
+Runs with game_map= (empty value) while using your GM_FOLDER.
+
+Log: logs_gm/gm_<GM_FOLDER>_map_empty.log
+
+6.Competition-Mode Auto-Tester (FullAutoCompetitionTester.sh)
+
+What we added
+We created an automated test harness for the simulator’s -competition mode. 
+It runs all algorithms in a specified folder against each other, with a given GameManager .so (our's), across all map files in the maps/ folder. 
+The script covers normal runs, edge cases, and argument parsing quirks, while producing separate logs for each scenario.
+
+Why this is useful
+Batch testing: Quickly evaluates all algorithms against one another on all maps.
+
+Ensures -competition mode works with -verbose, with multiple num_threads values, and with spaces after = in parameters.
+
+Error handling: Validates simulator behavior when required parameters are missing or folders are empty.
+
+Scalability insight: Highlights how runtime grows with the number of algorithms present in the folder.
+
+⚠️ Note: We did not include .so binaries in the submission folders due to assignment requirements. To run these tests, you need to compile and place the algorithm .so files and the GameManager .so in the appropriate folders.
+
+⚠️ Important: The runtime of -competition increases factorially with the number of .so files in the algorithms folder, since the simulator must test every pairwise matchup. For large folders, execution time may grow significantly.
+
+How to run
+cd AutomaticTester
+chmod +x FullAutoCompetitionTester.sh
+./FullAutoCompetitionTester.sh
+
+
+Configurable paths (edit at the top of the script if needed):
+
+SIMULATOR="../Simulator/simulator_206480972_206899163"
+
+ALGS_FOLDER="Algorithm_folder"
+
+GAME_MANAGER_SO="../GameManager/GameManager_206480972_206899163.so"
+
+MAPS_DIR="maps"
+
+Logs go into AutomaticTester/logs_competition/ (auto-created).
+
+What it does
+
+Standard run
+Runs the simulator with all required parameters as-is.
+
+With spaces around =
+Checks that arguments such as "algorithms_folder = Algorithm_folder" are handled properly.
+
+Verbose mode
+Adds -verbose to confirm detailed logging does not break competition runs.
+
+Threading variations
+Runs with num_threads=2, num_threads=4, and num_threads=8.
+
+Verbose + threading
+Combines -verbose with num_threads values.
+
+Negative / missing parameter tests
+
+Missing game_manager
+
+Missing game_maps_folder
+
+Missing algorithms_folder
+
+Empty algorithms folder
+
+What to look for in the logs
+
+Successful matchups across all maps.
+
+Clear error messages for missing/invalid parameters.
+
+Reasonable runtime scaling: with few .so files the run is quick, but runtime grows factorially with folder size.
+
+
+Extending the tester
+
+Add more maps: Simply drop new .txt files into AutomaticTester/maps and they’ll be included automatically.
+
+Add more algorithms: Place extra .so files in the algorithm folder—note that runtime grows factorially with the number of .sos.
+
+Add new parameters: Extend the script loops to cover new flags or argument patterns (e.g., custom logging, max steps).
+
+Custom GameManager: Change GAME_MANAGER_SO at the top of the script to point to a different GameManager build.

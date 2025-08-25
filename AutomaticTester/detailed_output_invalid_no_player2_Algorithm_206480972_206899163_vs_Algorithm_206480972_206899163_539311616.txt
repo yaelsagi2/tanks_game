@@ -1,0 +1,9 @@
+=== Game start ===
+Rows:1, Cols: 3, Max Steps: 500, Num Shells for each tank: 10
+Initial tanks position:
+Tank 0 of Player 1 starts at (0, 0).
+Tank 1 of Player 1 starts at (1, 0).
+Player 2 has no tanks left, Player 1 has 2 tanks alive.
+== Final Result ==
+Player 1 wins
+=== Game end ===

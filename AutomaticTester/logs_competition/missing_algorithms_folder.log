@@ -1,0 +1,12 @@
+[RUN] missing algorithms_folder
+Usage:
+  Comparative mode:
+    -comparative game_map=<file> game_managers_folder=<folder> algorithm1=<file> algorithm2=<file> [num_threads=<n>] [-verbose]
+  Competition mode:
+    -competition game_maps_folder=<folder> game_manager=<file> algorithms_folder=<folder> [num_threads=<n>] [-verbose]
+
+Missing arguments:
+  - algorithms_folder
+Unsupported arguments:
+  - Not enough arguments (got 3)
+

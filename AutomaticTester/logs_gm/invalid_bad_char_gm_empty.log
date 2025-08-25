@@ -1,0 +1,10 @@
+# Test: Empty GameManager folder on invalid_bad_char
+# Command: ../Simulator/simulator_206480972_206899163 -comparative algorithm1=../Algorithm/Algorithm_206480972_206899163.so algorithm2=../Algorithm/Algorithm_206480972_206899163.so game_managers_folder= game_map=maps/invalid_bad_char.txt
+Usage:
+  Comparative mode:
+    -comparative game_map=<file> game_managers_folder=<folder> algorithm1=<file> algorithm2=<file> [num_threads=<n>] [-verbose]
+  Competition mode:
+    -competition game_maps_folder=<folder> game_manager=<file> algorithms_folder=<folder> [num_threads=<n>] [-verbose]
+
+Missing arguments:
+  - game_managers_folder

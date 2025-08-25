@@ -1,0 +1,3 @@
+# Test: threads2spaceeq
+# Map: valid_extra_cols
+# Command: ../Simulator/simulator_206480972_206899163 -comparative algorithm1=../Algorithm/Algorithm_206480972_206899163.so algorithm2=../Algorithm/Algorithm_206480972_206899163.so game_managers_folder=../GameManager game_map=maps/valid_extra_cols.txt num_threads= 2

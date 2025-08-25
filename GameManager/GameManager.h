@@ -43,6 +43,7 @@ private:
     bool game_over = false; ///< Whether the game is over
     bool verbose; ///< Whether to log detailed information
     Logger logger; ///< Logger for game events
+    std::string recording_file_path; ///< Path to the recording file
 
 public:
     /**
@@ -74,19 +75,6 @@ public:
      * @param name2 Name of player 2.
      */
     void prepareLogger(std::string map_name, std::string name1, std::string name2);
-
-    /**
-     * @brief Enables recording of the game matrix.
-     * @param file_path Path to the output file.
-     * @param rows Number of rows in the board.
-     * @param cols Number of columns in the board.
-     */
-    void enableRecording(const std::string& file_path, std::size_t rows, std::size_t cols);
-
-    /**
-     * @brief Disables recording of the game matrix.
-     */
-    void disableRecording();
 
 private:
     /**
@@ -357,6 +345,19 @@ private:
     static std::vector<std::string> toAsciiGridFromBoard(GameBoard* board);
     // Helper function to log dead tanks
     void logDeadTanks(const std::vector<int>& dead_tanks, int& i, int size_tanks);
+
+        /**
+     * @brief Enables recording of the game matrix.
+     * @param file_path Path to the output file.
+     * @param rows Number of rows in the board.
+     * @param cols Number of columns in the board.
+     */
+    void enableRecording(const std::string& file_path, std::size_t rows, std::size_t cols);
+
+    /**
+     * @brief Disables recording of the game matrix.
+     */
+    void disableRecording();
 
 };
 

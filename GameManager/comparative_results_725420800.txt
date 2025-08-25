@@ -1,0 +1,15 @@
+game_map=maps/valid_input_2v7.txt
+algorithm1=../Algorithm/Algorithm_206480972_206899163
+algorithm2=../Algorithm/Algorithm_206480972_206899163
+
+GameManager_206480972_206899163
+Player 2 won with 6 tanks still alive
+4
+ 22 2 2   
+     *    
+    *     
+          
+          
+    2     
+          
+ 2        

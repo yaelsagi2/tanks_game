@@ -1,0 +1,3 @@
+[RUN] with num_threads=4
+algorithm folder should contain at least two shared libraries, exiting
+

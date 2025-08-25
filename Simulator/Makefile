@@ -21,7 +21,7 @@ COMMON_SRCS := \
         ../UserCommon/TimeStamp.cpp
 
 # Target-specific
-SIM_BIN := simulator
+SIM_BIN := simulator_206480972_206899163
 
 .PHONY: all clean
 

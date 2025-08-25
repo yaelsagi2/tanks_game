@@ -1,0 +1,18 @@
+=== Game start ===
+Rows:2, Cols: 3, Max Steps: 500, Num Shells for each tank: 10
+Initial tanks position:
+Tank 0 of Player 1 starts at (0, 0).
+Tank 0 of Player 2 starts at (2, 0).
+Step 1: Tank 0 requested battle info.
+Step 1: Tank 0 of player 1 performed GetBattleInfo
+Step 1: Tank 0 requested battle info.
+Step 1: Tank 0 of player 2 performed GetBattleInfo
+
+Step 2: Tank 0 of player 1 performed Shoot
+Step 2: Tank 0 of player 2 performed Shoot
+Shell 0 hit Tank 0 at (2, 0). This Tank is player's 2 and it destroyed.
+Shell 0 hit Tank 0 at (0, 0). This Tank is player's 1 and it destroyed.
+
+== Final Result ==
+Tie, both players have zero tanks
+=== Game end ===

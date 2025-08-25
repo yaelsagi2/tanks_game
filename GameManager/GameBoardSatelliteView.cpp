@@ -47,8 +47,8 @@ char GameBoardSatelliteView::getObjectAt(size_t x, size_t y) const {
 
 
 std::string GameBoardSatelliteView::getView() const {
+    // This function generates a string representation of the game board from the satellite view's perspective.
     std::string view;
-
     int cols = board->getCols();
     int rows = board->getRows();
     for (int y = 0; y < rows; ++y) {
@@ -64,7 +64,6 @@ std::string GameBoardSatelliteView::getView() const {
         }
         view.push_back('\n');
     }
-
     return view;
 }
 

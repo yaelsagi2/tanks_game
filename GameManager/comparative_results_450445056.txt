@@ -1,0 +1,8 @@
+game_map=maps/invalid_no_player2.txt
+algorithm1=../Algorithm/Algorithm_206480972_206899163
+algorithm2=../Algorithm/Algorithm_206480972_206899163
+
+GameManager_206480972_206899163
+Player 1 won with 2 tanks still alive
+0
+11@

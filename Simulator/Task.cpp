@@ -1,7 +1,9 @@
 #include "Task.h"
 #include "MapDataSatelliteView.h"
 
+
 void Task::run() {
+    // This function is responsible for executing the task
     try {
         // 1) Read map (local, per task)
         std::vector<std::string> errors;
@@ -17,7 +19,6 @@ void Task::run() {
             map_info.max_steps, map_info.num_shells);
 
         MapDataSatelliteView sat_view(&map_info);
-
         auto game_result = gm->run(map_info.cols, map_info.rows, sat_view, map_filename,
             map_info.max_steps,map_info.num_shells, *p1_up, player1_name, *p2_up, player2_name,taf1, taf2
         );

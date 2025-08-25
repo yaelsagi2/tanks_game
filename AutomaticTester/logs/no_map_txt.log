@@ -1,0 +1,4 @@
+# Test: non-existent map file (no_map.txt)
+# Command: ../Simulator/simulator_206480972_206899163 -comparative algorithm1=../Algorithm/Algorithm_206480972_206899163.so algorithm2=../Algorithm/Algorithm_206480972_206899163.so game_managers_folder=../GameManager game_map=maps/no_map.txt
+Failed to open file maps/no_map.txt. File does not exist or is not accessible. Skipping... maps/no_map.txt
+Fatal error: map file does not exist

@@ -16,6 +16,17 @@
 
 using namespace UserCommon_206480972_206899163;
 namespace GameManager_206480972_206899163 {
+
+
+// Helper to sanitize file names (spaces, slashes, backslashes to underscores)
+static std::string sanitize(const std::string& s) {
+    std::string result = s;
+    std::replace(result.begin(), result.end(), ' ', '_');
+    std::replace(result.begin(), result.end(), '/', '_');
+    std::replace(result.begin(), result.end(), '\\', '_');
+    return result;
+}
+
     // constructor
     GameManager::GameManager(bool verbose) : verbose(verbose), logger(verbose) {}
 
@@ -23,7 +34,12 @@ namespace GameManager_206480972_206899163 {
         string name2, TankAlgorithmFactory player1_tank_algo_factory, TankAlgorithmFactory player2_tank_algo_factory) {
         //This function runs the game loop, processing each step until the game is over.
         prepareLogger(map_name, name1, name2);
+        std::string algo1 = sanitize(name1);
+        std::string algo2 = sanitize(name2);
+        std::string map_sanitized = sanitize(map_name);
+        std::string recording_file = algo1 + "_vs_" + algo2 + "_" + map_sanitized + ".mxr";
         board = std::make_unique<GameBoard>(map_width,map_height, map, max_steps,num_shells);
+        // enableRecording(recording_file, board->getRows(),board->getCols());
         resetGameState();
         players.push_back(&player1);
         players.push_back(&player2);
@@ -35,9 +51,15 @@ namespace GameManager_206480972_206899163 {
         logInitialPositions();
         if (checkImmediateEnd(p1_tanks, p2_tanks)) { // Check if the game can end immediately
             recordFrameIfNeeded();
+            // disableRecording(); 
+            // MatrixRecorder::replay(recording_file, 50);
+            logger.logLineDetailed("=== Game end ===");
             return buildImmediateResult(p1_tanks, p2_tanks);
         }
         GameResult result = runGameLoop(); // Run the game loop until the game is over
+        // disableRecording();
+        // MatrixRecorder::replay(recording_file, 50);
+        logger.logLineDetailed("=== Game end ===");
         return result;
     }
 
@@ -799,7 +821,7 @@ void GameManager::updateShellsLocation() {
     // Update the location of all shells on the board
     // checking future collision in 1 point ahead andA 2 point ahead
     checkShellFutureCollisions(1);
-    checkShellFutureCollisions(2); //TODO: make it shorter?
+    checkShellFutureCollisions(2); 
     moveShellTwoPoints();
 }
 
@@ -987,7 +1009,9 @@ void GameManager::recordFrameIfNeeded() noexcept {
     if (!recorder) return;
     try {
         auto grid = toAsciiGridFromBoard(board.get());
-        recorder->addMapView(grid);
+        if (!grid.empty()) {
+            recorder->addMapView(grid);
+        }
     } catch (const std::exception& e) {
         recorder.reset();
     }
@@ -998,12 +1022,12 @@ std::vector<std::string> GameManager::toAsciiGridFromBoard(GameBoard* board) {
     // This function converts the game board to an ASCII grid representation.
     const size_t rows = board->getRows();
     const size_t cols = board->getCols();
-    std::vector<std::string> grid(cols, std::string(rows, ' '));
+   std::vector<std::string> grid(rows, std::string(cols, ' '));
     GameBoardSatelliteView satellite_view(board, nullptr);
 
     for (size_t y = 0; y < rows; ++y) {
         for (size_t x = 0; x < cols; ++x) {
-            grid[x][y] = satellite_view.getObjectAt(x, y);
+            grid[y][x] = satellite_view.getObjectAt(x, y);
         }
     }
     return grid;
@@ -1025,4 +1049,14 @@ void GameManager::logInitialPositions() {
     }
 }
 
+void GameManager::enableRecording(const std::string& file_path, std::size_t rows, std::size_t cols) {
+    if (!recorder) {
+        recorder = std::make_unique<MatrixRecorder>(file_path, rows, cols);
+    }
+}
+
+// Disables recording by resetting the MatrixRecorder instance.
+void GameManager::GameManager::disableRecording() {
+    recorder.reset();
+}
 } // namespace GameManager_206480972_206899163

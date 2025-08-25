@@ -35,14 +35,11 @@ int Loader::LoadSharedObjects(const ParsedArgs& args) {
     }
     int result = LoadSOFilesFromDir(dir, so_dir);
     closedir(dir);
-
     int file_result = 0;
     if (args.mode == ParsedArgs::Mode::Comparative) {
         int r1 = LoadSharedFile(args.algorithm1);
-        if (args.algorithm1 == args.algorithm2) {
-            AlgorithmRegistrar::getAlgorithmRegistrar().copyLastEntry();
-
-        } else {
+        if (args.algorithm1 == args.algorithm2) { AlgorithmRegistrar::getAlgorithmRegistrar().copyLastEntry();}
+        else {
             int r2 = LoadSharedFile(args.algorithm2);
             if (r1 != 0 || r2 != 0)
                 file_result = -1;
@@ -52,15 +49,14 @@ int Loader::LoadSharedObjects(const ParsedArgs& args) {
         int r = LoadSharedFile(args.game_manager_so);
         if (r != 0) file_result = -1;
     }
-
     return (result != 0 || file_result != 0) ? -1 : 0;
 }
 
 std::string Loader::filenameFromPath(const std::string& fullpath)
 {
+    // This function extracts the filename from a full path.
     namespace fs = std::filesystem;
     fs::path p(fullpath);
-
     // If path ends with a separator (no filename), use the last non-empty component.
     if (!p.has_filename()) {
         p = p.parent_path();
@@ -69,6 +65,7 @@ std::string Loader::filenameFromPath(const std::string& fullpath)
 }
 
 int Loader::LoadSharedFile(const std::string& so_file_path) {
+    // This function loads a shared object file and registers its factory.
     try {
         std::string filename_only = filenameFromPath(so_file_path);
         // Register Algorithm or GameManager factory with filename

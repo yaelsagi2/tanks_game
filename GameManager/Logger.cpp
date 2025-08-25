@@ -6,9 +6,8 @@ namespace GameManager_206480972_206899163 {
 Logger::Logger(bool enabled) : file_name(""), enabled(enabled) {}
 
 void Logger::open(const std::string& inputFilename) {
+    // This function opens the log files for writing.
     if (!enabled) return;
-
-
     // Remove any .txt from inputFilename if present
     std::string base_name = inputFilename;
     if (base_name.size() > 4 && base_name.substr(base_name.size() - 4) == ".txt") {
@@ -111,4 +110,5 @@ void Logger::logActionDetailed(const std::string& message, const std::string& ex
     if (!extra.empty()) detailed_out << " (" << extra << ")";
     detailed_out << std::endl;
 }
+
 }

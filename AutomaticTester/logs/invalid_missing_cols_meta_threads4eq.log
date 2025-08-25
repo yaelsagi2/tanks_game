@@ -1,0 +1,6 @@
+# Test: threads4eq
+# Map: invalid_missing_cols_meta
+# Command: ../Simulator/simulator_206480972_206899163 -comparative algorithm1=../Algorithm/Algorithm_206480972_206899163.so algorithm2=../Algorithm/Algorithm_206480972_206899163.so game_managers_folder=../GameManager game_map=maps/invalid_missing_cols_meta.txt num_threads=4
+ERROR: Invalid map headers in file 'maps/invalid_missing_cols_meta.txt'. Skipping this map.
+Summary: Missing Cols value.
+Fatal error: invalid map headers

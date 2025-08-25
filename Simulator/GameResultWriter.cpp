@@ -108,18 +108,6 @@ void GameResultWriter::writeComparativeResults(const std::string& game_map_path,
     out->flush();
 }
 
-/*
-expected ouput structure :
-
-game_maps_folder=Maps
-game_manager=GameManager_206038929_314620071
-
-Algorithm_322213836_212054837 61
-Algorithm_209399021_208239152 59
-Algorithm_206038929_314620071 35
-Algorithm_207174533_321321945 13
-
-*/
 void GameResultWriter::writeCompetitiveResults( const std::string& game_maps_folder, const std::string& algorithms_folder,
     const std::string& game_manager, const std::vector<std::pair<std::string, int>>& winners) {
     // This function writes the competitive results to a file.
